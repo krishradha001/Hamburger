@@ -1,0 +1,218 @@
+.inputCont select {
+  width: 250px;
+}
+
+.inputCont label {
+  margin-top: 5px;
+}
+#Mig
+{
+  display: inline-block;
+  margin: 8px;
+ 
+}
+#Mig1
+{
+display: inline-block;
+margin: 8px;
+font: normal normal bold 15px/14px Arial;
+
+}
+#Mig2
+{
+display: inline-block;
+margin: 8px;
+font: normal normal bold 15px/14px Arial;
+
+}
+.col-md-2
+{
+border:1px solid;
+padding-top: 12px;
+}
+.col-md-6
+{
+border:1px solid;
+padding-top: 12px;
+
+}
+.MEM
+{
+  display: block;
+  text-align: center;
+  padding-top: 7px;
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+.MEM2
+{
+  display: block;
+  text-align: center;
+  padding-top: 33px;
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+.MEM3
+{
+  display: block;
+  text-align: center;
+
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+
+.img
+{
+  width: 26px;
+height: 17px;
+}
+.MEM1
+{
+  background: #F9F9FA 0% 0% no-repeat padding-box;
+  text-align: center;
+  background-color: #F9F9FA;
+  padding-top: 8px;
+}
+.lastbox
+{
+  text-align: center;
+  font: normal normal bold 16px/19px Helvetica Neue;
+
+
+}
+.card-deck
+{
+
+  width: 794px;
+  height: 35px;
+  align-items: flex-end;
+  display: flex;
+  line-height: 15px;
+  margin: 8px -2%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+  padding-top: 66px;
+  margin-right: -14px;
+
+}
+.card-title
+{
+justify-content: space-between;
+  display: flex;
+  font: normal normal normal 15px/22px Helvetica Neue;
+}
+.card-text
+{
+display: flex;
+letter-spacing: 1px;
+word-spacing: 28px;
+
+}
+.row1
+{
+display: flex;
+  flex-wrap: wrap;
+  margin-right: -4px;
+  margin-left: -16px;
+  padding: 0px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+#cost
+{
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+#est
+{
+font: normal normal normal 20px/24px Helvetica Neue;
+}
+.align-self-start
+{
+ border: 1px solid; 
+ width:191px;
+
+}
+.align-self-start > img
+ {
+  margin: -8px;
+  padding-top: 10px;
+
+ }
+ #mt
+ {
+  font: normal normal normal 16px/18px Helvetica Neue;
+ }
+ #mt1
+ {
+  font: normal normal bold 14px/17px Helvetica Neue;
+ }
+ .p-2{
+  font: normal normal normal 16px/18px Helvetica Neue;
+ }
+ .p-2 > img
+{
+  padding: 3px;
+}
+#cat
+{
+padding-top: 13px;
+text-align: center;
+font: normal normal bold 16px/19px Helvetica Neue;
+}
+
+.align-self-start
+{
+  font: normal normal normal 16px/18px Helvetica Neue;
+  background: #d8d8d8;
+    
+    color: #ccc;
+
+}
+
+.align-self-start > h3{
+  
+  font: normal normal bold 16px/19px Helvetica Neue;
+  
+}
+.align-self-start > h3 > img{
+  
+ padding-right: 5px;
+ 
+  
+} 
+.card-title
+{
+  font: normal normal normal 18px/22px Helvetica Neue;
+}
+.col-md-12
+{
+  display: flex;
+  justify-content: center;
+  border: 1px solid;
+  
+}
+.col-md-12 > img{
+  max-height: 23px;
+}
+.col-md-12 > p{
+  font: 402 14px/20px Roboto, "Helvetica Neue", sans-serif;
+}
+.catalogue
+{
+  overflow-y: scroll;
+  height: 161px;
+}
+.MEM4
+{
+  display: block;
+  text-align: center;
+  padding-top: 7px;
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+/* #inst{
+  text-align: center;
+} */
+.table {
+  
+  display: contents;
+  }

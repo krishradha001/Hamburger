@@ -1,0 +1,317 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+a {
+  cursor: pointer;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+@font-face {
+  font-family: fort-bold;
+  src: url(assets/font/Fort-Bold.otf) format("opentype");
+  font-family: fort-book;
+  src: url(assets/font/Fort-Book.otf) format("opentype");
+  font-family: fort-extrabold;
+  src: url(assets/font/Fort-Extrabold.otf) format("opentype");
+  font-family: fort-light;
+  src: url(assets/font/Fort-Light.otf) format("opentype");
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* background-color: #f2f6fa !important;	 */
+}
+/* .mat-form-field-appearance-legacy .mat-form-field-wrapper {	
+      padding-bottom: 0;	
+  } */
+
+.movegroupbox .subheaderdiv .mat-form-field-label-wrapper {
+  display: none;
+}
+
+.movegroupbox .subheaderdiv .mat-form-field-infix {
+  border-top: none;
+}
+
+.afu-select-btn {
+  visibility: hidden;
+}
+
+.afu-select-btn:after {
+  content: url("\assets\add.png");
+  visibility: visible;
+  position: relative;
+  top: 284px;
+  right: 166px;
+}
+
+.afu-reset-btn {
+  visibility: hidden;
+}
+
+.afu-reset-btn:after {
+  content: url("\assets\delete.png");
+  visibility: visible;
+  position: relative;
+  top: 284px;
+  right: 199px;
+}
+
+.afu-constraints-info {
+  visibility: hidden;
+}
+
+.afu-upload-btn {
+  position: absolute;
+  top: 284px;
+  right: 150px;
+}
+
+.homePage,
+.loginPage {
+  background: aliceblue;
+  height: 100%;
+}
+
+app-root,
+app-login {
+  height: 100%;
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body.networkView {
+  background-color: #f2f6fa;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.counts-sec .card {
+  margin: 0 20px;
+}
+
+.count-cards .card-parent {
+  margin: 0 1%;
+}
+
+.count-cards .card-parent .card-body {
+  padding: 4px;
+  border-radius: 0;
+  height: 44px;
+}
+
+.card-parent .card {
+  border-radius: 0;
+}
+
+.light-blue .card-body {
+  border: #55b5bc 1px solid;
+}
+
+.red .card-body {
+  border: #df4324 1px solid;
+}
+
+.blue .card-body {
+  border: #245b90 1px solid;
+}
+
+.orange .card-body {
+  border: #ea973e 1px solid;
+}
+
+.count-cards .card-parent .card-body h3 {
+  margin-bottom: 0;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.count-cards .card-parent .card-body span {
+  font-size: 18px;
+}
+
+.light-blue {
+  color: #55b5bc;
+}
+
+.red {
+  color: #df4324;
+}
+
+.blue {
+  color: #245b90;
+}
+
+.orange {
+  color: #ea973e;
+}
+
+.row.count-cards {
+  padding: 25px 0;
+}
+
+.card-items .card-body {
+  padding: 0;
+}
+
+.card-deck.card-items h2 {
+  margin-bottom: 0;
+  font-size: 16px;
+  color: #1c1e25;
+}
+
+.card-deck.card-items h2 img {
+  padding-right: 10px;
+}
+
+.card-deck.card-items .card-header {
+  padding: 5px 5px 5px 15px;
+}
+
+.card-body .container h3 {
+  color: #7d7a7a;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+app-login {
+  height: 100%;
+  display: flex;
+}
+
+.mat-sidenav {
+  overflow: visible !important;
+  visibility: visible !important;
+}
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+mat-sidenav {
+  width: 15%;
+  background: #f5f5f4;
+  border-right: 6px solid #006e74;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav img {
+  border-style: none;
+  display: block;
+  position: relative;
+  top: 27px;
+  left: 41px;
+}
+/* mat-sidenav label {
+	  
+		  position: relative;
+		  top: 14px;
+		  left: 20px;
+		} */
+.img {
+  border-bottom: 1px solid #006e74;
+  background-color: #ffffff;
+  height: 100px;
+}
+
+.label label {
+  text-align: left;
+  font: 16px/14px fort;
+  letter-spacing: 0px;
+  color: #006e74;
+  opacity: 1;
+  position: relative;
+  top: 8px;
+  left: 45px;
+}
+.label img {
+  height: 19px;
+  position: relative;
+  top: 27px;
+  left: 14px;
+}
+#setting {
+  height: 15px;
+}
+.label {
+  border-bottom: 1px solid #006e74;
+  padding-bottom: 15px;
+}
+
+.toggleMenu {
+  position: absolute;
+  top: 30px;
+  right: -50px;
+}
+
+.mat-drawer-inner-container {
+  /* overflow: visible !important; */
+}
+.container-fluid {
+  padding: 0 !important;
+}
+.toggleIcon {
+  width: 25px;
+  height: 3px;
+  background-color: #006e74;
+  margin: 3px 0;
+  border-radius: 5px;
+}
+
+.toggleMenu {
+  padding: 8px;
+  box-shadow: none;
+  border: #006e74 1px solid;
+  border-radius: 2px;
+  outline: none;
+}
+.minWinheight {
+  min-height: calc(100vh - 56px);
+}
+
+button:active {
+  outline: none;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+}

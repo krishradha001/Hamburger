@@ -1,0 +1,172 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="container border-none">
+        <div class="container-header">
+            <h4>Add Questionnare</h4>
+            <div class="btn-group">
+                <h4>QID</h4>
+                <select name="cars" id="cars">
+                    <option value="volvo">All</option>                    
+                  </select>
+                
+            </div>
+            <div class="btn-group">
+                <h4>Department</h4>
+                <select name="cars" id="cars">
+                    <option value="volvo">All</option>                    
+                  </select>
+                
+            </div>
+
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Demographic
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">SL</th>
+                            <th scope="col">QID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Contact#</th>
+                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>1008</td>
+                            <td>John</td>
+                            <td>Network</td>
+                            <td>Sys.Analyst</td>
+                            <td>98765432</td>
+                            
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>1010</td>
+                            <td>Eric</td>
+                            <td>Devops</td>
+                            <td>Cloud Eng</td>
+                            <td>98765432</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td>1014</td>
+                            <td>Maria</td>
+                            <td>Software</td>
+                            <td>Developer</td>
+                            <td>98765432</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Existing Platform
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <!-- <canvas id="myChart"></canvas> -->
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Infrastructure
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+
+
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Application
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+
+
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Support System
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+
+
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>

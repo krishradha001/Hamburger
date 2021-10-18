@@ -1,0 +1,68 @@
+<app-header></app-header>
+<app-managementheader></app-managementheader>
+<div class="container-fluid">
+    <div class="col-md-12" id="card" >
+        <div class="col-md-6" id="first">
+            <div class="first-tab" >
+                
+                <button [ngClass]="{'highlight': 'overall'===id }"  (click)="ontag('overall')" > Overall Track</button>
+                <button [ngClass]="{'highlight': 'modern'===id }"  (click)="ontag('modern')">Modernization Tracker</button>
+                <button [ngClass]="{'highlight': 'remedian'===id }" (click)="ontag('remedian')">Remedian Tracker</button>
+            </div>
+            <div class="row">
+                <div class="container" >
+                    <div *ngIf="id==='overall'">
+                        <canvas id="myChart1"></canvas>
+                    </div>
+
+                    <div *ngIf="id==='modern'">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                    <div *ngIf="id==='remedian'">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-6" id="first">
+            <div class="first-tab" >
+                
+                <button [ngClass]="{'highlight': 'remediation'===id1 }"  (click)="ontag1('remediation')" > Remediation</button>
+                <button [ngClass]="{'highlight': 'migrationtimeline'===id1 }"  (click)="ontag1('migrationtimeline')">Migration Timeline</button>
+                <button [ngClass]="{'highlight': 'taskdispensation'===id1 }" (click)="ontag1('taskdispensation')">Task Dispensation</button>
+            </div>
+            <div class="row">
+                <div class="container" >
+                    <div *ngIf="id1==='remediation'">
+                        <h2>Graph1</h2>
+                    </div>
+
+                    <div *ngIf="id1==='migrationtimeline'">
+                        <app-timelinedashboard></app-timelinedashboard>
+                    </div>
+                    <div *ngIf="id1==='taskdispensation'">
+                         <canvas id="myChart2"></canvas>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <app-managementdataspecific></app-managementdataspecific>
+</div>

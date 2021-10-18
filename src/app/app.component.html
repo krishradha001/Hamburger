@@ -1,0 +1,38 @@
+﻿<ng-conainer *ngIf="!checkScreen">
+<!-- <app-header></app-header> -->
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid" style="background: #F6F9FE;">
+
+    <mat-sidenav-container>
+        <mat-sidenav mode="over" #sidenav [(opened)]="opened">
+            <button class="toggleMenu" (click)="sidenav.toggle()">
+                <div class="toggleIcon"></div>
+                <div class="toggleIcon"></div>
+                <div class="toggleIcon"></div>
+            </button>
+            <div class="img">
+                <img src="assets/images/MigrateDashboard/Aviva.png" />
+            </div>
+
+        <div class="label">
+            <img src="assets/images/MigrateDashboard/plan.svg" /> <a routerLink="/plan"><label>Plan</label></a>
+            <img src="assets/images/MigrateDashboard/management.svg" /><a routerLink="/managementdashboard"><label>Management</label></a>
+            <img src="assets/images/MigrateDashboard/setting.svg" id="setting" /><label>Settings</label>
+        </div>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+   
+   
+</div>
+</ng-conainer> 
+
+<ng-conainer *ngIf='checkScreen'>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</ng-conainer>  

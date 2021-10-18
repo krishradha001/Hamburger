@@ -1,0 +1,140 @@
+<app-header></app-header>
+<div class="container-fluid">
+
+   
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <a routerLink="/questionare"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+
+  </div>
+  
+    <!-- <div>
+      <mat-accordion>
+
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Demographic
+            </mat-panel-title> -->
+            <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+          <!-- </mat-expansion-panel-header>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">SL</th>
+                <th scope="col">QID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Contact#</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>1008</td>
+                <td>John</td>
+                <td>Network</td>
+                <td>Sys.Analyst</td>
+                <td>98765432</td>
+
+
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>1010</td>
+                <td>Eric</td>
+                <td>Devops</td>
+                <td>Cloud Eng</td>
+                <td>98765432</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>1014</td>
+                <td>Maria</td>
+                <td>Software</td>
+                <td>Developer</td>
+                <td>98765432</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div>
+      <mat-accordion>
+
+
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Existing Platform
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+          <ul>
+            1. What platform does your main application run on?
+
+          </ul>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Cloud</mat-radio-button>
+            <mat-radio-button value="2">Hosted Server</mat-radio-button>
+            <mat-radio-button value="1">Own Server</mat-radio-button>
+            <mat-radio-button value="2">Other</mat-radio-button>
+          </mat-radio-group>
+          <ul>
+            2. Which Cloud Platform do you use?
+
+          </ul>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Cloud</mat-radio-button>
+            <mat-radio-button value="2">Hosted Server</mat-radio-button>
+            <mat-radio-button value="1">Azure</mat-radio-button>
+            <mat-radio-button value="2">Other</mat-radio-button>
+          </mat-radio-group>
+          <ul>
+            3. What Operating System does your application work on?
+
+          </ul>
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Windows</mat-radio-button>
+            <mat-radio-button value="2">Mac OS</mat-radio-button>
+            <mat-radio-button value="1">Linux</mat-radio-button>
+            <mat-radio-button value="2">Other</mat-radio-button>
+          </mat-radio-group>
+
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div> -->
+    <iframe id="ngsFrame" [src]="baseUrl" height="500" frameborder="0" marginheight="0" marginwidth="0" frameborder="0" style="min-width: 100%; height:500px; border:none;overflow:hidden" scrolling="no">Loading form</iframe><script type="text/javascript">var ngsFrame=document.getElementById("ngsFrame");if(window.location.href&&window.location.href.indexOf("?")>-1){var queryParamsIndex=window.location.href.indexOf("?");queryParamsIndex>=0&&(ngsFrame.src=ngsFrame.src+(ngsFrame.src.indexOf("?")>=0?"&":"?")+window.location.href.substr(queryParamsIndex+1))}window.frameCallback=function(e){if(e.data.type){var a=document.getElementById("ngsFrame");switch(e.data.type){case"setFormHeight":a.style.height=e.data.value+"px";break;case"setFormWidth":a.style.width=e.data.value+"px",a.style.minWidth="unset"}}},window.addEventListener?window.addEventListener("message",frameCallback,!1):window.attachEvent&&window.attachEvent("onmessage",frameCallback);var ngsIFrame=document.getElementById("ngsFrame"),ngsIframeWindow=ngsIFrame.contentWindow||ngsIFrame.contentDocument,crossOrigin=ngsIFrame.src;function submit(){ngsIframeWindow&&ngsIframeWindow.postMessage({type:"submit"},ngsIFrame.src)}function saveProgress(){ngsIframeWindow&&ngsIframeWindow.postMessage({type:"saveProgress"},ngsIFrame.src)}function nextPage(){ngsIframeWindow&&ngsIframeWindow.postMessage({type:"nextPage"},ngsIFrame.src)}function previousPage(){ngsIframeWindow&&ngsIframeWindow.postMessage({type:"previousPage"},ngsIFrame.src)}</script>
+    <div>
+      <mat-accordion>
+
+
+          <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      Existing Environment
+                  </mat-panel-title>
+              </mat-expansion-panel-header>
+              <!-- <div *ngFor="let device of viewfile">
+                  <li>Current OS: {{device.exsiting_environment[0].current_os}}</li>
+                  <li>Current Database: {{device.exsiting_environment[1].current_database}}</li>
+                  <li>Current Middleware: {{device.exsiting_environment[2].current_middleware}}</li>
+                  <li>Virtual Or Physical: {{device.exsiting_environment[3].virtual__or_physical}}</li>
+              </div> --> <div class="chart-container" style="position: relative; height:70vh; width:63vw">
+                  <canvas id="myChart4" ></canvas>
+              </div>
+
+          </mat-expansion-panel>
+      </mat-accordion>
+  </div>
+
+
+
+
+</div>

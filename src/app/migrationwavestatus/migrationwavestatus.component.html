@@ -1,0 +1,221 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <app-counts-list></app-counts-list>
+  <div class="row">
+    <div class="col-md-12" class="header">
+      <h2>Migration Wave Status</h2>
+
+    </div>
+  </div>
+  <div class="container-fluid" >
+    <div class="col-md-12" >
+      <div class="col-md-9" >
+        <p class="wave">Wave</p>
+        <div class="btn-group">
+          <select name="count" id="countdropdown" [(ngModel)]="dropdownval" class="form-control"
+            (ngModelChange)='waveiddrop($event)'>
+            <!-- <option value="">Select Count</option>
+                        <option value="Device">Device Count</option>
+                        <option value="Application">Application Count</option>
+                        <option value="Service">Service Count</option> -->
+            <option *ngFor="let data of dropwave" [value]="data">{{data}}</option>
+            <option value="all">ALL</option>
+          </select>
+
+
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+
+          <h2 id="progress">Progress Standings</h2>
+        </div>
+
+
+      </div>
+      <div class="col-md-3" style="border: 1px solid; border-bottom: none;left: 16px;">
+        <h2  id="progress">Migration Wave Summary</h2>
+      </div>
+    </div>
+    <div class="col-md-12" style="bottom: 22px;">
+      <div class="col-md-9" style="min-height: 262px;">
+        <div class="col-md-2" id="wave">
+          <table class="table">
+            <thead>
+              <tr id="tableheading1">
+                <th>WaveID</th>
+                <th>Applications</th>
+
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr id="tabledata1" *ngFor="let item of waveid;"
+                (click)="waveappiddrop(item.wave_id,item.migration_group)">
+                
+                <td>{{item.wave_id}}</td>
+
+                <td>{{item.migration_group}} </td>
+                <td *ngFor="let items of waveappid;"> <ng-container *ngIf="item.migration_group==items.name"><img src="assets\Selected.svg" /></ng-container> </td>
+               
+
+
+
+              </tr>
+
+
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="col-md-3" style="display:contents; ">
+          <div class="d-flex align-items-md-start flex-column bd-highlight mb-3" *ngFor="let items of waveappid;">
+            <div class=" p-2 bd-highlight">
+              <p id="status">Status</p>
+              <p id="mgid">{{items.name}}</p>
+
+            </div>
+            <div class="p-2 bd-highlight">
+              <p id="tot">Total Resources</p>
+              <p id="mgid">{{items.total_device_count}}</p>
+
+            </div>
+            <div class="p-2 bd-highlight">
+              <p id="tot">In Progress</p>
+              <p id="mgid">{{items.total_in_progress}}</p>
+
+            </div>
+            <div class="p-2 bd-highlight">
+              <p id="tot">Completed</p>
+              <p id="mgid">{{items.total_completed}}</p>
+
+            </div>
+            <div class="p-2 bd-highlight">
+              <p id="tot">Issues</p>
+              <p id="issue">{{items.total_issue}}</p>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-7">
+          <canvas id="myChart"></canvas>
+        </div>
+
+
+        <div class="col-md-2">
+          <table class="table table-bordered " style="margin-left: -36px;">
+            <thead>
+              <tr id="device">
+                <th>Device</th>
+                <th>Status</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="tabledata1" *ngFor="let itemsss of wavedev">
+
+                <td>{{itemsss.device_name}}</td>
+                <td>{{itemsss.device_state}}</td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+
+
+      </div>
+      <div class="col-md-3" style="border: 1px solid; border-top: none;left: 16px">
+      
+        <!-- <canvas id="myChart4" style="display: block; height:133px; width:201px"></canvas> -->
+        <canvas id="myChart4" width="400" height="400"></canvas>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-12" class="header">
+        <h2>Application Migration Status</h2>
+
+       
+      </div>
+    </div>
+    
+
+      <div class="col-md-12">
+        <div class="col-md-9">
+          <div class="col-md-2" id="wave1">
+            <table class="table" >
+              <thead>
+                <tr id="tableheading1">
+                  
+                  <th>Applications</th>
+
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr id="tabledata1" *ngFor="let item of appsel; let i=index"
+                  (click)="applicationidselect(item.appcomp_id)" >
+                     
+                  
+                        
+                  <td>{{item.appcomp_name| slice:0:25}}...</td>
+                  <td *ngFor="let items of appid;"> <ng-container *ngIf="item.appcomp_name==items.name"><img src="assets\Selected.svg" /></ng-container> </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+            
+          </div>
+
+          
+          <div class="col-md-7" >
+            <canvas id="myChart2"></canvas>
+            
+          </div>
+
+
+          <div class="col-md-2">
+            <table class="table table-bordered ">
+              <thead>
+                <tr id="device">
+                  <th>Device</th>
+                  <th>Status</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="tabledata1" *ngFor="let items of appdev">
+
+                  <td>{{items.name}}</td>
+                  <td>{{items.state}}</td>
+
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+        <div class="col-md-3" style="border: 1px solid;left: 16px;">
+          <h2 id="progress">Resource Migration Summary</h2>
+          <canvas id="myChart3" style="display: block; height:242px; width:273px"></canvas>
+        </div>
+      </div>
+
+    
+  </div>
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,307 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mat-header-cell {
+    font-weight: 600;
+}
+
+.mat-header-cell,
+.mat-cell {
+    justify-content: center;
+}
+
+.mat-column-Device_name,
+.mat-column-Id {
+    justify-content: left;
+}
+
+.rotate180 {
+    transform: rotate(-180deg);
+    /* Legacy vendor prefixes that you probably don't need... */
+    /* Safari */
+    -webkit-transform: rotate(-180deg);
+    /* Firefox */
+    -moz-transform: rotate(-180deg);
+    /* IE */
+    -ms-transform: rotate(-180deg);
+    /* Opera */
+    -o-transform: rotate(-180deg);
+    /* Internet Explorer */
+    filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=6);
+}
+
+.movebuttons button {
+    /* display: flex; */
+    /* padding: 10px;
+    width: 80px;
+    border: #d3d9df 1px solid;
+    background-color: transparent;
+    border-radius: 0;
+    height: 55px;
+    margin-bottom: 10px; */
+    /* background-color: #D3D9DF; */
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #212529;
+    width: 80px;
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 0px 1px 0 #D3D9DF;
+    -moz-box-shadow: 0px 0px 1px 0 #D3D9DF;
+    box-shadow: 0px 0px 1px 0 #D3D9DF;
+    border: solid #D3D9DF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+mat-row {
+    border-bottom: none;
+}
+
+.subBodyDiv {
+    display: flex;
+}
+
+.movebuttons {
+    width: 100px;
+    text-align: center;
+    margin-top: 160px;
+}
+
+.movebuttons button img,
+.movebuttons button span {
+    display: block;
+}
+
+.movebuttons button span {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #231F20;
+}
+
+.movegroupbox .table-responsive {
+    width: calc(50% - 50px);
+    border: #DAE1E7 1px solid;
+}
+
+.movebuttons button img {
+    width: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movegroupbox {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-around;
+}
+
+.saveGrpBtn {
+    border: #231F20 1px solid;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #231F20;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    width: 120px;
+}
+
+.subheaderdiv {
+    display: flex;
+    justify-content: space-between;
+    background-color: #F7F7F7;
+    padding: 15px 15px;
+}
+
+.movegroupbox table tr {
+    padding: 0 15px;
+}
+
+
+/* .custommigrationgroupsec table tr td:last-child,
+.custommigrationgroupsec table tr th:last-child {
+    padding: 0 15px;
+    border: #DAE1E7 1px solid;
+} */
+
+.mat-header-row {
+    position: sticky;
+    top: 0;
+}
+
+.mat-table {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.movegroupbox table th {
+    color: #1C1E25;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.subheaderdiv h3 {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1C1E25;
+    margin: 0;
+}
+
+
+/* .subheaderdiv select { */
+
+.row {
+    border: #C2BCBE 1px solid;
+    background-color: #FCFCFC;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.form-control {
+    width: 150px;
+    height: 30px;
+    border: #D7E0E3 1px solid;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: #ABABAB;
+    padding: 5px 5px;
+    flex: none;
+}
+
+.subheaderdiv .input-group {
+    width: auto;
+}
+
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999 !important;
+    background-color: #cccccc !important;
+    color: #666666 !important;
+}
+
+.mat-row.active {
+    background-color: lightblue;
+}
+
+.mat-row.disabled {
+    background-color: #cccccc;
+    opacity: .5;
+}
+
+.countbody {
+    height: 300px;
+    vertical-align: middle;
+    display: table-cell;
+    width: 95px;
+}
+
+.migrationgroupsec .subheaderdiv .mat-form-field-label-wrapper {
+    display: none;
+}
+
+.devicecount {
+    background-color: white;
+    border-left: 1px solid rgba(0, 0, 0, .12);
+    width: 100px;
+    text-align: center;
+    color: rgba(0, 0, 0, .54);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.subBodyDiv .mat-table {
+    width: calc(100% - 100px);
+}
+
+.counthead {
+    border-bottom: rgba(0, 0, 0, .12) 1px solid;
+    line-height: 56px;
+}
+
+.subfooterDiv {
+    border-bottom: rgba(0, 0, 0, .12) 1px solid;
+    border-top: rgba(0, 0, 0, .12) 1px solid;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.maxCount {
+    width: calc(100% - 100px);
+    line-height: 39px;
+}
+
+.remainingCount {
+    width: 100px;
+    text-align: center;
+    border-left: rgba(0, 0, 0, .12) 1px solid;
+    vertical-align: middle;
+    line-height: 39px;
+}
+
+.maxCount label {
+    float: right;
+    padding-right: 20px;
+}
+
+.maxCount label:last-child {
+    padding-right: 100px;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+
+/* .mat-header-cell.mat-column-Service_count::after {
+    content: "";
+    height: 1px;
+    width: 100px;
+    background-color: #cccccc;
+    position: relative;
+    bottom: 1px;
+} */
+
+
+/* Scroll bar css  */
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, .12);
+    border-radius: 5px;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .12);
+    border-radius: 5px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .12);
+}

@@ -1,0 +1,120 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+  <div class="container-fluid">
+      <app-counts-list></app-counts-list>
+      
+<!-- display the records count in card items as progress bar for discovery section -->
+<div class="row network-body-sec">
+    <h2><img src="assets/images/analyse.svg"/>Migration Sizing <a routerLink="/migrate"><button type="button" class="btn btn-info">Back</button></a></h2>
+    
+
+    <div class="dataSecContainer">
+        <div class="groupsec item-a">
+            <div class="groupInfo">
+                <label for="">Cloud Suitability</label>
+                <!-- <table class="table">
+                  <thead>
+                    <tr>
+                        <th>Move Group ID</th>
+                    <th>Set Index</th>
+                    <th>Value</th>
+                    </tr>
+                    <tr *ngFor="let device of suitability ">
+                        <td >{{ device.MGroupId}} </td>
+                        <button>ID</button>
+                        <td>{{ device.index}} </td>
+                     </tr>
+                    
+                    </tbody>
+                    </table> -->
+                    <table class="table table-borderless" >
+                        <thead > 
+                          <tr>
+                            <th>Move Group ID</th>
+                            <th>Set Index</th>
+                            <th>Value</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let device of suitability " >
+                                
+                                <td >{{ device.MGroupId}} </td>
+                                <!-- <td style="display: block; margin: auto;"> <button >ID</button> </td> -->
+                                <td class="text-center align-middle">
+                                    <div class="btn-group">
+                                        <button class="btn btn-outline-primary">ID</button>
+                                     
+                                    </div>                
+                                </td>
+                                <td>{{ device.index}} </td>
+                             </tr>
+                     
+                        </tbody>
+                      </table>
+              
+            </div>            
+        </div>
+
+        <div class="groupsec item-c">
+            <div class="groupInfo">
+                <label for="">Move Group Ordering</label>      
+                <ul *ngFor="let device of migrationsizing" >
+                    <li>{{device.MGroupId}}</li>
+
+                </ul>  
+                     
+             
+            </div>            
+        </div>
+
+        <div class="groupsec item-d">
+            <div class="groupInfo">
+                <label for="">Complexity Order</label>
+                <ul *ngFor="let device of migrationsizing" >
+                    <li>{{device.MGroupId}}</li>
+
+                </ul>  
+                <!-- <p>List view / Tabular view / Graph</p> -->
+            </div>            
+        </div>
+
+        <div class="groupsec item-b">
+            <div class="groupInfo">
+                <label for="">Compatibility Index</label>                
+                <table class="table table-borderless" >
+                    <thead > 
+                      <tr>
+                        <th>Move Group ID</th>
+                        <th>Set Index</th>
+                        <th>Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let device of compatibility ">
+                            
+                            <td >{{ device.MGroupId}} </td>
+                            <!-- <td style="display: block; margin: auto;"> <button >ID</button> </td> -->
+                            <td class="text-center align-middle">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-primary">ID</button>
+                                 
+                                </div>                
+                            </td>
+                            <td>{{ device.index}} </td>
+                         </tr>
+                 
+                    </tbody>
+                  </table>
+            </div>            
+        </div>
+
+        
+    </div>
+</div>
+     
+  </div>
+
+
+  

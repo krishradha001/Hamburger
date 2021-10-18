@@ -1,0 +1,82 @@
+.justify-content-md-end
+ {
+  
+    margin-top: -25px;
+    padding-bottom: 15px;
+    padding-right: 46px;
+}
+
+.container-fluid {
+    background: #f2f6fa;
+  
+   
+}
+#back
+{
+    margin-top: -20px;
+}
+.container-header
+{
+    border-bottom: 2px solid #cccc;
+    padding-top: 10px;
+}
+.container-header1
+{
+    margin: -106px -22px 4px;
+    display: flex;
+    text-align: center;
+   
+
+}
+.container{
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: 16px;
+    padding-bottom: 6px;
+    padding-top: 75px;
+    padding-left: 128px;
+}
+.row1 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 35px;
+    margin-left: 19px;
+}
+.device
+{
+    padding: 4px;
+    padding-left: 108px;
+}
+.control{
+    /* width: 160px;
+    position: relative;
+    bottom: 31px;
+    right: 84px; */
+    display: flex;
+}
+/* body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f2f6fa !important;
+    
+  
+  } */
+  .row.no-gutters .col-6,
+.row.no-gutters .col-12 {
+    margin-bottom: 20px;
+}
+  
+  .list button
+  {
+      border:none;
+      background: #006E74;
+      justify-content: end;
+      background: #006E74 0% 0% no-repeat padding-box;
+  }
+  h3 {
+    font: 400 16px/28px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    margin: 0 -24px -33px;
+}
+.list{
+    margin: 5px 89px;
+}

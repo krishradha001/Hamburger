@@ -1,0 +1,90 @@
+<div class="Container-fluid">
+
+  <div class="container-fluid planContainer">
+  
+    <div class="containerHeader">
+      <img src="assets\hamBurger.png" class="hamburgerIcon" />
+      <h4>Plan</h4>
+      
+      <button class="btn btn-outline-secondary" type="button"><a routerLink="/migrate">Migration Dashboard</a></button>
+    </div>
+
+    <hr>
+
+    <div class="clear sec-one">
+      <div class="bd-highlight sec-one-child migration" >
+        <h5>Migration Strategy</h5>
+      </div>
+
+      <div class="bd-highlight strategy-doc sec-one-child" >
+        <h5>Strategy Documents</h5>
+        <hr>
+        
+        <div class="documents-list">
+          <ul >
+                     
+            <li *ngFor="let device of uploadfile; let i=index"> {{device.Filename}}   
+            <button  (click)="deletePost(device.Filename)">
+              <img src="assets\delete.png" /> 
+              
+              </button>  </li> 
+            
+          </ul>
+   
+          
+          
+        </div>
+        <hr>
+        <div>
+          <button class="button"  (click)="openDialog()" >
+            <img src="/assets/add.png" alt="" />
+          </button>
+           <!-- <button (click)="onNoClick()">upload</button> -->
+        </div>
+              
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="clear sec-one">
+      <div class="bd-highlight sec-one-child migration" >
+        <h5>Pre-engagement Checklist</h5>
+      </div>
+
+      <div class="bd-highlight strategy-doc sec-one-child" >
+        <h5>Reference Documents</h5>
+        <hr>
+        <div class="documents-list">
+          <ul >
+                     
+            <li *ngFor="let device of uploadfile; let i=index"> {{device.Filename}}   
+            <button  (click)="deletePost(device.Filename)">
+              <img src="assets\delete.png" /> 
+              
+              </button>  </li> 
+            
+          </ul>
+        </div>
+        <hr>
+        <div>
+          <button class="button"  (click)="openDialog()" >
+            <img src="/assets/add.png" alt="" />
+          </button>
+           <!-- <button (click)="onNoClick()">upload</button> -->
+        </div>
+        
+    
+
+        
+
+      </div>
+
+    
+
+  
+  </div>
+
+</div>

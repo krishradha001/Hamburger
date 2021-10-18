@@ -1,0 +1,142 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <!-- Counts list for device  -->
+    <!-- fluid container to display the records cound in card items -->
+
+    <div class="row count-cards">
+        <!-- *ngIf="deviceBoxData" -->
+        <div class="card-parent col-xl-2 col-sm-3 col-12 light-blue">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Migration Groups</h3>
+                                <span>{{ '' || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 red">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Custom Groups</h3>
+                                <span>{{ '' || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 blue">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+                            <div class="align-self-center">
+                                <i class="icon-graph success font-large-2 float-left"></i>
+                            </div>
+                            <div class="media-body text-center">
+                                <h3>Move Groups</h3>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 orange">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Total Application</h3>
+                                <span>{{ '' || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 ">
+            <div class="card" style="min-height: 46px;background-color: #ccc;">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <!-- <h3>Hyper-V Cluster Count</h3>
+                  <span>{{ this.total_HyperV_devices }}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fluid container to display the records count in card items ends here -->
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row moveGrp-body-sec">
+
+        <div class="d-grid gap-2 sub-title">
+            <h2><img src="assets/images/analyse.svg" />Migration Group Custom Sizing
+                <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+            </h2>
+
+        </div>
+
+        <app-move-group-box></app-move-group-box>
+    </div>
+</div>
+
+<div class="container-fluid moveGrpSec">
+
+    <h2>Custom Migration Group</h2>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Custom Group ID</th>
+                <th>Main Device Group</th>
+                <th>Dependent Device Count</th>
+                <th>Application Count</th>
+                <th>Service Count</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mgItems of customMoveGrpData">
+                <td>{{mgItems.Custom_group_id}}</td>
+                <td>{{mgItems.Move_groups}}</td>
+                <td>{{mgItems.Dependent_device_count}}</td>
+                <td>{{mgItems.Application_count}}</td>
+                <td>{{mgItems.Service_count}}</td>
+                <td>
+                    <a (click)="viewMG(mgItems.Custom_group_id);"><img src="assets/view.svg" /></a>
+                </td>
+                <td>
+                    <a (click)="editMG(mgItems.Custom_group_id);"><img src="assets/edit.svg" /></a>
+                </td>
+                <td>
+                    <a (click)="deleteMG(mgItems.Custom_group_id);"><img src="assets/delete.svg" /></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

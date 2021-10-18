@@ -1,0 +1,136 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-header">
+            <h3 style="padding-left: 14px;">Workload sizing and target</h3>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+    <div class="container col-md-12" style="border: 1px solid; overflow-x: auto;" >
+        <div class="row">
+            <div class="container-header" >
+                <h3>Source System</h3>
+                
+                    <table style="text-align: center;"> 
+                        <thead>
+                            <tr>
+                                <th scope="col">Res.ID#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">IP address</th>
+                                <th scope="col">Application Discovered</th>
+                                <!-- <th scope="col">Dependencies(Agentless)</th> -->
+                                <th scope="col">Cores</th>
+                                <th scope="col">Memory (MB)</th>
+                                <th scope="col">Disks</th>
+                                <th scope="col">Storage(GB)</th>
+                                <th scope="col">Operating System</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr *ngFor="let device of source">
+                              
+                                    <td >{{ device.device_id}} </td>
+                                    <td>{{ device.name}} </td>
+                                    <td style="word-break: break-word;">{{ device.ip_set}} </td>
+                                    <td>{{ device.app_count}} </td>
+                                    <td>{{ device.core}} </td>
+                                    <td>{{ device.memory}} </td>
+                                    <td>{{ device.disks}} </td>
+                                    <td>{{ device.storage_utilization}} </td>
+                                    <td>{{ device.os}} </td>
+                                    
+                              
+                            </tr>
+                           
+                          </tbody>
+                        </table>
+        
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-12" style="border: 1px solid; height:150px;">
+        
+            <div class="container-header">
+                <h3>Target System</h3>
+                <div class="container-content col-md-12" >
+                    
+                    <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Res.ID#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">IP address</th>
+                            <th scope="col">Application</th>
+                            <th scope="col">Dependencies(Agentless)</th>
+                            <th scope="col">Cores</th>
+                            <th scope="col">Memory (MB)</th>
+                            <th scope="col">Disks</th>
+                            <th scope="col">Storage(GB)</th>
+                            <th scope="col">Operating System</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">10012</th>
+                            <td>dbserver-qa</td>
+                          <td>10.3.0.8</td>
+                          <td>6</td>
+                          <td>10</td>
+                          <td>3</td>
+                          <td>200</td>
+                          <td>6</td>
+                          <td>250</td>
+                          <td>Windows10</td>
+                          
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+       
+    </div>
+    <div class="container col-md-12" style="border: 1px solid; height:150px">
+        <div class="row">
+            <div class="container-header">
+                <h3>Hosts and port mapping</h3>
+                <div class="container-content col-md-12"  >
+                    
+                    <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Res.ID#</th>
+                            
+                            <th scope="col">IP address</th>
+                            <th scope="col">Label</th>
+                            <th scope="col">Subnet</th>
+                            <th scope="col">Port</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <tr style>
+                            <th scope="row">10012</th>
+                            
+                          <td>10.3.0.8</td>
+                          <td>en5</td>
+                          <td style="padding: 8px;"> Subnet-172.40.20.0/24</td>
+                          <td>ens5-02:d2:ba:e2:e1:b1 @dbserver-qa</td>
+                         
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+
+      
+</div>

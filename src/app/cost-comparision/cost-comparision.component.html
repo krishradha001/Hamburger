@@ -1,0 +1,145 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+  <div class="container-fluid">
+      <app-counts-list></app-counts-list>
+      
+<!-- display the records count in card items as progress bar for discovery section -->
+<div class="row network-body-sec">
+    <h2><img src="assets/images/Shape-costcomp.svg"/>Cost Comparision <a routerLink="/migrate"><button type="button" class="btn btn-info">Back</button></a></h2>
+
+
+    <div class="dataSecContainer">
+      <div class="inputSec">
+            <div class="inputCont">
+                <label>Select Move Group :</label>
+                <select class="form-control" id="sel1" [(ngModel)]="group">
+                    <option value="all" selected="selected">All</option>
+                    <option value="1">Move Group 1</option>
+                    <option value="2">Move Group 2</option>
+                    <option value="3">Move Group 3</option>
+                </select>
+                
+            </div>
+            <div class="inputCont">
+            </div>
+            <div class="inputCont">
+            </div>
+      </div>
+
+      <div class="results">
+        <div class="resultBlock">
+          <div class="resultItems">
+              <h2 class="resultTitle">Google Cloud</h2>
+              <div class="resultsec">
+                <div class="boxs">Iaas</div>
+                <div class="boxs">Paas</div>
+                <div class="boxs">Saas</div>
+            </div>
+            <div class="resultsec">
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$210</ng-container><ng-container *ngIf='group == "3"'>$270</ng-container><ng-container *ngIf='group == "1"'>$210</ng-container><ng-container *ngIf='group == "2"'>$380</ng-container></div>
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$380</ng-container><ng-container *ngIf='group == "3"'>$380</ng-container><ng-container *ngIf='group == "1"'>$340</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$390</ng-container><ng-container *ngIf='group == "1"'>$360</ng-container><ng-container *ngIf='group == "2"'>$350</ng-container></div>
+            </div>
+          </div>
+          <div class="resultItems">
+            <h2 class="resultTitle">Amazon Services</h2>
+            <div class="resultsec">
+                <div class="boxs">Iaas</div>
+                <div class="boxs">Paas</div>
+                <div class="boxs">Saas</div>
+            </div>
+            <div class="resultsec">
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$240</ng-container><ng-container *ngIf='group == "3"'>$210</ng-container><ng-container *ngIf='group == "1"'>$270</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$350</ng-container><ng-container *ngIf='group == "1"'>$390</ng-container><ng-container *ngIf='group == "2"'>$360</ng-container></div>
+                <div class="boxs"><ng-container *ngIf='group == "all"'>$380</ng-container><ng-container *ngIf='group == "3"'>$380</ng-container><ng-container *ngIf='group == "1"'>$340</ng-container><ng-container *ngIf='group == "2"'>$320</ng-container></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resultBlock">
+            <div class="resultItems">
+                <h2 class="resultTitle">Microsoft Azure</h2>
+                
+                    <div class="resultdes">
+                        <div class="resultsec">
+                            <div class="boxs">Iaas</div>
+                            <div class="boxs">Paas</div>
+                            <div class="boxs">Saas</div>
+                        </div>
+                        <div class="resultsec">
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$200</ng-container><ng-container *ngIf='group == "3"'>$220</ng-container><ng-container *ngIf='group == "1"'>$280</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$340</ng-container><ng-container *ngIf='group == "1"'>$350</ng-container><ng-container *ngIf='group == "2"'>$310</ng-container></div>
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$390</ng-container><ng-container *ngIf='group == "3"'>$310</ng-container><ng-container *ngIf='group == "1"'>$380</ng-container><ng-container *ngIf='group == "2"'>$360</ng-container></div>
+                        </div>
+                        
+                    </div>
+            </div>
+
+            <div class="resultItems">
+                <h2 class="resultTitle">vm ware</h2>
+                <div class="resultsec">
+                    <div class="boxs">Iaas</div>
+                    <div class="boxs">Paas</div>
+                    <div class="boxs">Saas</div>
+                </div>
+                <div class="resultsec">
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$200</ng-container><ng-container *ngIf='group == "3"'>$220</ng-container><ng-container *ngIf='group == "1"'>$280</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$340</ng-container><ng-container *ngIf='group == "1"'>$350</ng-container><ng-container *ngIf='group == "2"'>$310</ng-container></div>
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$390</ng-container><ng-container *ngIf='group == "3"'>$310</ng-container><ng-container *ngIf='group == "1"'>$380</ng-container><ng-container *ngIf='group == "2"'>$360</ng-container></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- result block ends -->
+
+
+        <div class="resultBlock">
+            <div class="resultItems">
+                <h2 class="resultTitle">Alibaba</h2>
+                
+                    <div class="resultdes">
+                        <div class="resultsec">
+                            <div class="boxs">Iaas</div>
+                            <div class="boxs">Paas</div>
+                            <div class="boxs">Saas</div>
+                        </div>
+                        <div class="resultsec">
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$200</ng-container><ng-container *ngIf='group == "3"'>$220</ng-container><ng-container *ngIf='group == "1"'>$280</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$340</ng-container><ng-container *ngIf='group == "1"'>$350</ng-container><ng-container *ngIf='group == "2"'>$310</ng-container></div>
+                            <div class="boxs"><ng-container *ngIf='group == "all"'>$390</ng-container><ng-container *ngIf='group == "3"'>$310</ng-container><ng-container *ngIf='group == "1"'>$380</ng-container><ng-container *ngIf='group == "2"'>$360</ng-container></div>
+                        </div>
+                        
+                    </div>
+            </div>
+
+            <div class="resultItems">
+                <h2 class="resultTitle">IBM</h2>
+                <div class="resultsec">
+                    <div class="boxs">Iaas</div>
+                    <div class="boxs">Paas</div>
+                    <div class="boxs">Saas</div>
+                </div>
+                <div class="resultsec">
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$200</ng-container><ng-container *ngIf='group == "3"'>$220</ng-container><ng-container *ngIf='group == "1"'>$280</ng-container><ng-container *ngIf='group == "2"'>$340</ng-container></div>
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$350</ng-container><ng-container *ngIf='group == "3"'>$340</ng-container><ng-container *ngIf='group == "1"'>$350</ng-container><ng-container *ngIf='group == "2"'>$310</ng-container></div>
+                    <div class="boxs"><ng-container *ngIf='group == "all"'>$390</ng-container><ng-container *ngIf='group == "3"'>$310</ng-container><ng-container *ngIf='group == "1"'>$380</ng-container><ng-container *ngIf='group == "2"'>$360</ng-container></div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- result block ends -->
+
+        
+        
+      </div>
+    </div>
+</div>
+     
+  </div>
+
+
+  

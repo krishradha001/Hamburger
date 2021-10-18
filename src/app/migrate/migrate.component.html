@@ -1,0 +1,289 @@
+
+    <div class="container-fluid loginContainer minWinheight">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="card-deck card-items" style="width: 100%; ">
+        <!-- Card item starts -->
+        <div class="card bg-primary1">
+            <div class="card-body text-center">
+                <div class="card-header text-left" style="background-color: #78C6A3;">
+                    <h2><img src="assets/images/MigrateDashboard/discovery.svg" /> Discovery</h2>
+                </div>
+                <div class="container">
+                    <h3 class="text-center" id="hd3">Survey</h3>
+
+                    <div class="clearfix progress-items" *ngIf="progressdata">
+                        <div class="small-circle-items">
+                            <div [ngClass]="getclassList(progressdata.average_percent_questionnaire)">
+
+                                <span><a routerLink="/questionare">{{ progressdata.average_percent_questionnaire }} %</a></span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                            <a routerLink="/questionare" id="surv"><label>Questionnaire</label></a>
+                        </div>
+
+                        <div class="small-circle-items">
+                            <div [ngClass]="getclassList(progressdata.average_percent_interview)">
+                                <span>{{ progressdata.average_percent_interview }} %</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                            <label id="surv" style="padding-left: 9px;">Interviews</label>
+                        </div>
+
+                        <div class="small-circle-items">
+                            <div [ngClass]="getclassList(progressdata.average_percent_report)">
+                                <span>{{ progressdata.average_percent_report }} %</span>
+                                <div class="slice">
+                                    <div class="bar"></div>
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                            <label id="surv" style="padding-left: 15px;">Reports</label>
+                        </div>
+
+
+                    </div>
+                    <!-- /default -->
+
+                </div>
+
+                <div class="container line-bars">
+                    <h3 class="text-center" id="hd3">Configure</h3>
+                    <div class="card-sec">
+                        <div class="bars-labels" id="rst">
+                            <!-- <label *ngFor="let device of deviceCount"><a routerLink="/discover">{{ device.third_party_name }}</a></label> -->
+                            <label><a routerLink="/discover">Device42</a></label>
+                            <label>Hystax</label>
+                            <label>StackStorm</label>
+                        </div>
+                        <div class="bars-lines">
+
+                            <ng-container>
+
+                                <div class="progress blue " *ngFor="let device of deviceCount">
+                                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="getVal(device.third_party_percent)" aria-valuemin="0" aria-valuemax="100" [style.width]="getValinPx(device.third_party_percent)">
+                                    </div>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- Card item ends -->
+
+        <!-- display the records count in card items as progress bar for analyse section -->
+        <!-- Card item starts -->
+        <div class="card bg-primary1">
+            <div class="card-body text-center">
+                <div class="card-header text-left" style="background-color: #67B99A;">
+                    <h2><img src="assets/images/MigrateDashboard/analyze.svg" />Assessment</h2>
+                </div>
+
+                <div class="container line-bars">
+                    <h3 class="text-center" id="hd3">Environment</h3>
+                    <div class="card-sec">
+                        <div class="bars-labels" id="rst">
+                            <label><a routerLink="/networkView">Inventory of all assets</a></label>
+                            <label><a routerLink="/analyseStats">Technical details</a></label>
+                            <label>Performance metrics</label>
+                            
+
+                        </div>
+                        <div class="bars-lines">
+
+                            <ng-container *ngFor="let envItem of environmentCount">
+                                <div class="progress blue" *ngIf="envItem.name == 'Inventory of all assets' || envItem.name == 'Technical details' || envItem.name == 'Performance metrics'">
+                                    <ng-container>
+                                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="getVal(envItem.percent)" aria-valuemin="0" aria-valuemax="100" [style.width]="getValinPx(envItem.percent)">
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+                           
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container line-bars">
+                    <h3 class="text-center" id="hd3">Landscape</h3>
+                    <div class="card-sec">
+                        <div class="bars-labels" id="rst">
+                            <label>Infrastructure config</label>
+                            <label>Dependency map</label>
+                            <label>Application matrix</label>
+                        </div>
+                        <div class="bars-lines">
+
+                            <ng-container *ngFor="let envItem of environmentCount">
+                                <div class="progress blue" *ngIf="envItem.name == 'Infrastructure config' || envItem.name == 'Dependency map' || envItem.name == 'Application matrix'">
+                                    <ng-container>
+                                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="getVal(envItem.percent)" aria-valuemin="0" aria-valuemax="100" [style.width]="getValinPx(envItem.percent)">
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Card item ends -->
+
+        <!-- display the records count in card items as progress bar for recomeded section -->
+        <!-- Card item starts -->
+        <div class="card bg-primary1 recomended">
+            <div class="card-body text-center">
+                <div class="card-header text-left" style="background-color: #4DB192;">
+                    <h2><img src="assets/images/MigrateDashboard/recommend.svg"/>Recommended</h2>
+                </div>
+
+
+                <div class="container line-bars" *ngIf="environmentCount" style="height:auto;">
+
+                    <div class="card-sec">
+                        <div class="bars-labels" id="rst" >
+                            <label><a routerLink="/moveGroupView">Move group and stategy</a></label>
+                            <label><a routerLink="/migrationSizing">Target Sizing</a></label>
+                            <label><a routerLink="/recommend">Workload sizing and target</a></label>
+                            <label><a routerLink="/wavemoveGroup">Workload Costing</a></label>
+                            <label><a routerLink="/costComp">Cloud costing report</a></label>
+                            <label>Efficiency Matrix</label>
+                            <label>Migration plan</label>
+                            <label><a routerLink="/moveGroup">Manual Move Group</a></label>
+                            <label><a routerLink="/migrationwave">Migration Wave</a></label>
+                        </div>
+                        <div class="bars-lines">
+
+                            <ng-container *ngFor="let envItem of environmentCount">
+                                <div class="progress blue" *ngIf="envItem.name == 'Move group and stategy' || envItem.name == 'Target Sizing' || envItem.name == 'Workload sizing and target' || envItem.name == 'Cloud costing report' || envItem.name == 'Efficiency Matrix' || envItem.name == 'Migration plan'">
+                                    <ng-container>
+                                        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" [attr.aria-valuenow]="getVal(envItem.percent)" aria-valuemin="0" aria-valuemax="100" [style.width]="getValinPx(envItem.percent)">
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container line-bars">
+                    <!-- <h3 class="text-center">Configure</h3> -->
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Card item ends -->
+
+        <!-- Card item starts -->
+        <div class="card bg-primary1">
+            <div class="card-body text-center">
+                <div class="card-header text-left" style="background-color: #469D89;">
+                    <h2><img src="assets/images/MigrateDashboard/migrate.svg"/>Migrate</h2>
+                </div>
+
+                <div class="migrateLinks">
+                    <div class="labels">
+                        <h6>Status</h6>
+                        <h6>Progress</h6>
+                    </div>
+                    <div class="graphSec">
+                        <canvas id="pieChart" mdbChart [chartType]="chartType" [datasets]="chartDatasets" [labels]="chartLabelsLine" [colors]="chartColors" [options]="chartOptions" [legend]="false"></canvas>
+                        <canvas id="lineChart" mdbChart [chartType]="chartTypeLine" [datasets]="chartDatasetsLine" [labels]="chartLabelsLine" [colors]="chartColorsLine" [options]="chartOptionsLine" [legend]="false" (chartHover)="chartHovered($event)"></canvas>
+                    </div>
+
+                    <div class="migrationLinks">
+                        <div class="sec">
+                            <label><a routerLink="/migrationQue"><img src="assets/images/mg.svg" /></a><a routerLink="/migrationGroup">Migration Group</a></label>
+                            <label><a routerLink="/migrationQue"><img src="assets/images/mq.svg" /></a><a routerLink="/migrationQue">Migration Queue</a></label>
+                        </div>
+                        <div class="sec">
+                            <label><a routerLink="/migrationReadyGroup"><img src="assets/images/mrg.svg" /></a><a routerLink="/migrationReadyGroup">Migration Ready Groups</a></label>
+                            <label><img src="assets/images/mt.svg" />Migration Timeline</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- Card item ends -->
+
+    </div>
+
+</div>
+<!-- <div class="card-deck card-items" id="migrate"> -->
+    <!-- Card item starts -->
+
+    <!-- <div class="card bg-primary1">
+        <div class="card-body text-center">
+            <div class="card-header text-left">
+                <h2>Prepare</h2>
+            </div> -->
+
+
+
+        <!-- </div>
+    </div> -->
+    <!-- Card item ends -->
+
+    <!-- display the records count in card items as progress bar for analyse section -->
+    <!-- Card item starts -->
+    <!-- <div class="card bg-primary1">
+        <div class="card-body text-center">
+            <div class="card-header text-left">
+                <h2>Validate</h2>
+            </div>
+
+
+
+        </div>
+    </div> -->
+    <!-- Card item ends -->
+
+    <!-- display the records count in card items as progress bar for recomeded section -->
+    <!-- Card item starts -->
+    <!-- <div class="card bg-primary1">
+        <div class="card-body text-center">
+            <div class="card-header text-left">
+                <h2>Support</h2>
+            </div>
+
+
+
+        </div>
+    </div> -->
+    <!-- Card item ends -->
+
+    <!-- Card item starts -->
+    <!-- <div class="card bg-primary1">
+        <div class="card-body text-center">
+            <div class="card-header text-left">
+                <h2>Closure</h2>
+            </div>
+
+
+
+        </div>
+    </div> -->
+    <!-- Card item ends -->
+
+<!-- </div> -->

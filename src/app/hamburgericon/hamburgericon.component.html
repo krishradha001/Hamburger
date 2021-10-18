@@ -1,0 +1,22 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="over" #sidenav [(opened)]="opened">
+      <div class="img">
+              <img src="assets/images/MigrateDashboard/Aviva.png" />
+            </div>
+
+<div class="label">
+  <img src="assets/images/MigrateDashboard/plan.svg" /> <a routerLink="/plan"><label>Plan</label></a>
+  <img src="assets/images/MigrateDashboard/management.svg" /><a routerLink="/managementdashboard"><label>Management</label></a>
+  <img src="assets/images/MigrateDashboard/setting.svg" id="setting" /><label>Settings</label>
+</div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      
+      <button (click)="sidenav.toggle()">Toggle</button>
+      <app-counts-list></app-counts-list>
+      
+    </mat-sidenav-content>
+  </mat-sidenav-container>   
+  
+

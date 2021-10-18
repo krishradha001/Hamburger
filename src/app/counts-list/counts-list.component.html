@@ -1,0 +1,86 @@
+<!-- fluid container to display the records cound in card items -->
+
+<div class="row count-cards " style="width: 100%;">
+    <div class="card-parent col-xl-2 col-sm-3 col-12 light-blue">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+
+                        <div class="media-body text-center">
+                            <h3>Total Resource Count</h3>
+                            <span>{{ total_resource_count || '' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-parent col-xl-2 col-sm-3 col-12 red">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+
+                        <div class="media-body text-center">
+                            <h3>Virtual Machine Count</h3>
+                            <span>{{ virtual_device_count || '' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-parent col-xl-2 col-sm-3 col-12 blue">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+                        <div class="align-self-center">
+                            <i class="icon-graph success font-large-2 float-left"></i>
+                        </div>
+                        <div class="media-body text-center">
+                            <h3>Hyper-V Cluster Count</h3>
+                            <span>{{ total_hyperv_devices }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-parent col-xl-2 col-sm-3 col-12 orange">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+
+                        <div class="media-body text-center">
+                            <h3>Total Device Count</h3>
+                            <span>{{ total_device_count || '' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-parent col-xl-2 col-sm-3 col-12 ">
+        <div class="card" style="min-height: 46px;background-color: #ccc;">
+            <div class="card-content">
+                <div class="card-body">
+                    <div class="media d-flex">
+
+                        <div class="media-body text-center">
+                            <!-- <h3>Hyper-V Cluster Count</h3>
+                <span>{{ this.total_HyperV_devices }}</span> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrow">
+
+   <a routerLink="/migrate" >  <img src="assets\Homeicon.svg" /></a>
+    </div>
+</div>
+<!-- fluid container to display the records count in card items ends here -->

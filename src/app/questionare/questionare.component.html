@@ -1,0 +1,112 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="containerHeader">
+            <h3><img src="assets/images/discover.svg"/>Configure Questionnare/ResponseConsole</h3>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+            <a routerLink="/migrate"><button class="btn btn-outline" type="button" style="background: #FFFFFF 0% 0% no-repeat padding-box;">Back</button></a>
+        </div>
+    </div>
+    <div class="container" style="border: 1px solid;">
+        <div class="row">
+            <div class="containerHeader">
+                <h4>Questionnare</h4>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end" >
+              <!-- <a routerLink="/addquestionare"><a class="btn btn-primary" href="" role="button"style="background: #FFFFFF 0% 0% no-repeat padding-box; color: black;">Add</a></a> -->
+                <div class="btn-group" style="padding-right: 0px;">
+                  <a routerLink="/uploadinfras"><button class="btn addDoc" style="background: #FFFFFF 0% 0% no-repeat padding-box; position: relative;right: 14px;" >
+                    Upload Infradata
+                     </button></a>
+                  <button class="btn addDoc" style="background: #FFFFFF 0% 0% no-repeat padding-box;" (click)="openDialog()" >
+                 Upload Questionnaire
+                  </button>
+                </div>
+               
+                  <!-- <label for="inputGroupFile02"  id="inputGroupFile02" class="custom-file-input" type="button" multiple
+                  (change)="selectFiles($event.target.files)">Upload Questionnare</label> -->
+                  <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm" type="button" style="background: #FFFFFF 0% 0% no-repeat padding-box; color: black;">
+                        Sort by department
+                    </button>
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="background: #FFFFFF 0% 0% no-repeat padding-box color black;"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+
+                </div>
+            </div> 
+        </div>
+      
+        
+        
+       
+       <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            
+         
+            <th scope="col">QID</th>
+            
+            <th scope="col">Department</th>
+            <th scope="col">Rollout Count</th>
+            <th scope="col">Responded</th>
+            <th scope="col">In-Progress</th>
+            <th scope="col">Rollout Date</th>
+            <th scope="col">Created By</th>
+            <!-- <th scope="col">Method</th> -->
+          </tr>
+        </thead>
+        <tbody>
+       
+          <tr *ngFor="let device of questionares; let i=index">
+        
+           
+            <td >{{ device._id}} </td>
+            
+            <td>{{ device.Department}} </td>
+  
+            <td>{{ device.rollout_count}} </td>
+            <td>{{ device.responded}} </td>
+            <td>{{ device.in_progress}} </td>
+            <td>{{ device.rollout_date}} </td>
+             <td>{{ device.created_by}} </td>
+             <!-- <td>{{device.method}}</td> -->
+       
+            <td> <button *ngIf="device.method!=upload" (click)="downloadfile(device._id)"> <img src="assets\upload.svg" /></button></td>
+        
+
+           
+             <td><button>
+              <img src="assets\mail.svg" /> 
+              </button></td>
+        <td><button>
+                <img src="assets\eye.svg" /> 
+                </button></td>
+                <td><button (click)="listquestionnaire(device._id)">
+                  <img src="assets\list.svg" /> 
+                  </button></td>
+                  <td><button>
+                    <img src="assets\edit.svg" /> 
+                    </button></td>
+                    <td><button (click)="deletequestion(device._id)">
+                      <img src="assets\delete.svg" /> 
+                      </button></td>
+        
+      
+    
+  
+
+          </tr>
+        
+         
+         
+        </tbody>
+      </table>
+    </div>
+
+
+</div>

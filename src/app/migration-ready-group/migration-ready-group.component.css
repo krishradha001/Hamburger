@@ -1,0 +1,109 @@
+.migrationGroup-body-sec h2 img {
+    padding-right: 10px;
+    margin: 0;
+    display: none;
+}
+
+div {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sub-title {
+    border-bottom: 2px solid #cccccc;
+    width: 100%;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    display: flex !important;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.sub-title button {
+    padding: 3px 10px;
+}
+
+.sub-title a {
+    float: right;
+}
+
+button.mgAction {
+    background-color: transparent;
+    padding: 5px 30px;
+    border: #746e6e 1px solid;
+}
+
+.btnTd {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+th:last-child {
+    display: flex;
+    justify-content: center;
+}
+
+.table-responsive {
+    border: #cccccc 1px solid;
+    min-height: 500px;
+}
+
+.hiddenRow {
+    padding: 0;
+}
+
+table th,
+table td {
+    color: #231F20;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.mgReadyGTable .btn.btn-info {
+    background-color: transparent;
+    margin-left: 5px;
+    color: #000;
+    font-size: 12px;
+    padding: 3px 6px;
+    border: #cccccc 1px solid;
+}
+
+.table thead th {
+    border-bottom: none;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.modal-header {
+    padding: 10px 15px;
+    background-color: #0097AC;
+}
+
+.modal-header button {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.modal-body,
+.modal-body .container {
+    padding: 0;
+}
+
+.modal-body table th {
+    color: #231F20;
+    font-size: 14px;
+}
+
+.modal-body table td {
+    color: #707071;
+    font-size: 12px;
+}
+
+.modal-content {
+    border: 1px solid rgb(128 128 128 / 20%);
+}

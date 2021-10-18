@@ -1,0 +1,153 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row migrationGroup-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <h2><img src="assets/images/analyse.svg" />Migration Ready Groups</h2>
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table mgReadyGTable">
+            <thead>
+                <tr>
+                    <th>Migration Group</th>
+                    <th>Resource Count</th>
+                    <th>Source ID</th>
+                    <th>Source Port</th>
+                    <th>Source Location</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of mRGList">
+                    <td>{{ item._id }}</td>
+                    <td>{{ item.resource_count}}</td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.id}}
+                                </ng-container>
+                            </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.id}}
+                                    <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                    <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                    
+                                </ng-container>
+                            </span> More
+                            </button>
+                        </ng-container>
+
+                    </td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.source_details.port}}
+                                </ng-container>
+                            </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.source_details.port}}
+                                    <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                    <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                    
+                                </ng-container>
+                            </span> More
+                            </button>
+                        </ng-container>
+                    </td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.source_details.location}}
+                                </ng-container>
+                            </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                <ng-container>
+                                    {{rdItem.source_details.location}}
+                                    <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                    <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                    
+                                </ng-container>
+                            </span> More
+                            </button>
+                        </ng-container>
+                    </td>
+                    <td class="btnTd">
+                        <button class="mgAction configTarget ">Migrate Now</button>
+                        <button class="mgAction configTarget">Add to Migration Plan</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Migration Ready Group - Resource Data</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Resource Id</th>
+                                    <th>Source Port</th>
+                                    <th>Source Location</th>
+                                    <th>Target Port</th>
+                                    <th>Target Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of mrGPopupData">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.source_details.port }}</td>
+                                    <td>{{ item.source_details.location }}</td>
+                                    <td>{{ item.target_details.ip }}</td>
+                                    <td>{{ item.target_details.port }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

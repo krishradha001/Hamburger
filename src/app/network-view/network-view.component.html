@@ -1,0 +1,100 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row network-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <h2><img src="assets/images/analyse.svg" />Auto Discovered Assets</h2>
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+
+        <div class="row discoverdAssetsDiv serverMainDiv">
+            <div class="inventoryView discoverdAssetsItems">
+                <h2 class="d-flex justify-content-center">Inventory View</h2>
+                <div class="itemsList">
+                    <h5 class="d-flex justify-content-center">Servers</h5>
+                    <form>
+                        <div class="form-group">
+                            <select class="form-control" id="deviceSel" name="deviceSelect" [(ngModel)]="deviceTypeSelectedValue" (change)='setDevicesType();'>
+                            <option value="all">Show all devices</option>
+                            <option value="select">Select a device</option>
+                            </select>
+                        </div>
+                    </form>
+                    <ng-container *ngIf="deviceListRecvd">
+                        <ul class="serverList" id="serverList">
+                            <li [id]="device" *ngFor="let device of aryNameToFilter">
+                                <label (click)="updateApps(device.id, device.name);">{{device.name}}</label>
+                                <a routerLink="/functionalData/{{device.name}}" target="_parent"><img src="assets/images/navigateIcone.svg" /></a>
+                            </li>
+                        </ul>
+                    </ng-container>
+
+                </div>
+            </div>
+
+            <div class="mappingView discoverdAssetsItems">
+                <div [ngClass]="{'iframeExpanded': isexpand === true, 'iframeCollapsed': isexpand === false}">
+                    <div class="expandCollapse">
+                        <div *ngIf="isexpand == false" class="expand" (click)="expCol();"><img src="assets/images/expandIcon.svg" /></div>
+                        <div *ngIf="isexpand == true" class="collapsed" (click)="expCol();"><img src="assets/images/collapseIcon.svg" /></div>
+                    </div>
+                    <div class="mapLabelText">
+                        <label for="Network View">Network View</label>
+
+                    </div>
+
+                    <iframe [src]="iframeUrl"></iframe>
+                    <div class="mapInfoText">
+                        <ng-container *ngIf="showInfoLabel">
+                            <label for="Network View">Subnets<span class="subnetColor"></span></label>
+                            <label for="Network View">Devices<span class="deviceColor"></span></label>
+                            <label for="Network View">Ip<span class="ipColor"></span></label>
+                            <!-- <label for="Network View">Selected<span class="selectedColor"></span></label> -->
+                        </ng-container>
+
+                        <label for="Info Img" id="infoImg" (mouseover)="showInfoLabel=true" (mouseout)="showInfoLabel=false"><img src="assets/images/mapInfo.svg" /></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- List of Applications -->
+        <div class="row discoverdAssetsDiv appsMainDiv">
+            <div class="inventoryView discoverdAssetsItems">
+                <div class="itemsList">
+                    <h5 class="d-flex justify-content-center">Applications</h5>
+                    <ul class="serverList" id="appsList">
+                        <li [id]="apps" *ngFor="let apps of appsList; let i = index">
+                            <label (click)="highlightApp(i);">{{apps}}</label>
+                            <a routerLink="/functionalAppdata/{{apps}}" target="_parent"><img src="assets/images/navigateIcone.svg" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mappingView discoverdAssetsItems appsMap">
+                <div [ngClass]="{'iframeExpanded': isexpand2 === true, 'iframeCollapsed': isexpand2 === false}">
+                    <div class="expandCollapse">
+                        <div *ngIf="isexpand2 == false" class="expand" (click)="expCol2();"><img src="assets/images/expandIcon.svg" /></div>
+                        <div *ngIf="isexpand2 == true" class="collapsed" (click)="expCol2();"><img src="assets/images/collapseIcon.svg" /></div>
+                    </div>
+                    <div class="mapLabelText"><label for="Network View">Software</label></div>
+                    <iframe id="apsIframe" [src]="iframeApsUrl"></iframe>
+                    <div class="mapInfoText">
+                        <ng-container *ngIf="showSoftInfoLabel">
+                            <label for="Network View">Devices<span class="deviceColor"></span></label>
+                            <label for="Network View">Software<span class="software"></span></label>
+                            <!-- <label for="Network View">Selected<span class="selectedColor"></span></label> -->
+                        </ng-container>
+
+                        <label for="Info Img" id="infoImg" (mouseover)="showSoftInfoLabel=true" (mouseout)="showSoftInfoLabel=false"><img src="assets/images/mapInfo.svg" /></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

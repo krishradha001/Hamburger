@@ -1,0 +1,170 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <!-- Counts list for device  -->
+    <!-- fluid container to display the records cound in card items -->
+
+    <div class="row count-cards" *ngIf="deviceBoxData">
+        <div class="card-parent col-xl-2 col-sm-3 col-12 light-blue">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Ram</h3>
+                                <span>{{ deviceBoxData.ram || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 red">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Core</h3>
+                                <span>{{ deviceBoxData.core || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 blue">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+                            <div class="align-self-center">
+                                <i class="icon-graph success font-large-2 float-left"></i>
+                            </div>
+                            <div class="media-body text-center">
+                                <h3>App Count</h3>
+                                <span>{{ deviceBoxData["app count"] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 orange">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <h3>Storage Utilization</h3>
+                                <span>{{ deviceBoxData.storage_utilization || '' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-parent col-xl-2 col-sm-3 col-12 ">
+            <div class="card" style="min-height: 46px;background-color: #ccc;">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+
+                            <div class="media-body text-center">
+                                <!-- <h3>Hyper-V Cluster Count</h3>
+                  <span>{{ this.total_HyperV_devices }}</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fluid container to display the records count in card items ends here -->
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row1 network-body-sec">
+
+        <div class="d-grid gap-2 sub-title">
+            <h2 *ngIf="paramType"><img src="assets/images/analyse.svg" />Utilization and traffic on {{ paramType }}</h2>
+            <a routerLink="/networkView"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+
+        <div class="dataSecContainer">
+            <h3>Functional Data</h3>
+            <div class="functionalData">
+
+                <div class="functionalTable">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Resource </th>
+                                <th>Category</th>
+                                <th>utilization </th>
+                            </tr>
+                            <ng-container *ngFor="let res of resource_utilization_data | keyvalue">
+                                <ng-container *ngFor="let item of res.value; let i = index">
+                                    <tr>
+                                        <td *ngIf="i == 0" [attr.rowspan]="res.value.length"> <b>{{res.key}}</b></td>
+                                        <td>{{item.measure}}</td>
+                                        <td>{{item.value + " "+ item.units}}</td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="otherData">
+                    <div class="performance">
+                        <label for="performance">Performance</label>
+                        <label for="utilization">Utilization</label>
+                        <label for="performance">Performance</label>
+                    </div>
+                    <div class="annotate" *ngIf="movegroup_data">
+                        <label for="annotate">Annotate : {{ movegroup_data.annotate }}</label>
+                        <label for="tagid">Tag ID : {{ movegroup_data.tag }}</label>
+                        <label for="Move Group Id">Move Group Id : {{ movegroup_data.movegroup_id }}</label>
+                    </div>
+                </div>
+            </div>
+            <h3>Non Functional Data</h3>
+            <div class="nonfunctionalData">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Stake Holders </th>
+                            <th>Name </th>
+                            <th>Eamil</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+
+                        </tr>
+
+                        <ng-container *ngFor="let res of non_funct_data | keyvalue">
+                            <ng-container *ngFor="let item of res.value">
+                                <tr>
+                                    <td> <b>{{res.key}}</b></td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.address}}</td>
+                                    <td>{{item.phone}}</td>
+                                    <td>{{item.type}}</td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+
+                    </tbody>
+                </table>
+                <div class="otherNonFun"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

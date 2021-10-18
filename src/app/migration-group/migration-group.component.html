@@ -1,0 +1,221 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row migrationGroup-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <h2><img src="assets/images/analyse.svg" />Migration Group</h2>
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+
+    <div class="table-responsive mg">
+        <table class="table">
+            <tr>
+                <th>Migration Group</th>
+                <th>Resource Count</th>
+                <th>Source ID</th>
+                <th>Source Port</th>
+                <th>Location</th>
+                <th colspan="2">Action</th>
+            </tr>
+
+            <ng-container *ngFor="let item of mgSList">
+                <tr>
+                    <td>{{ item._id }}</td>
+                    <td>{{ item.resource_count}}</td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.id}}
+                                    </ng-container>
+                                </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.id}}
+                                        <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                        <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                        
+                                    </ng-container>
+                                </span> More
+                                </button>
+                        </ng-container>
+
+                    </td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.source_details.port}}
+                                    </ng-container>
+                                </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.source_details.port}}
+                                        <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                        <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                        
+                                    </ng-container>
+                                </span> More
+                                </button>
+                        </ng-container>
+                    </td>
+                    <td>
+                        <ng-container *ngIf="item.resource_data.length == 0">
+                            <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.source_details.location}}
+                                    </ng-container>
+                                </span>
+                        </ng-container>
+
+                        <ng-container *ngIf="item.resource_data.length > 0">
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                    <ng-container>
+                                        {{rdItem.source_details.location}}
+                                        <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                        <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                        
+                                    </ng-container>
+                                </span> More
+                                </button>
+                        </ng-container>
+                    </td>
+                    <td class="btnTd">
+                        <button class="mgAction configTarget accordion-toggle" data-toggle="collapse" data-target="#demo1" (click)="getConfigData(item._id);">Configure Target</button>
+                        <button class="mgAction configTarget">Add to Migration Ready</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6" class="hiddenRow">
+                        <div class="accordion-body collapse" id="demo1">
+                            <div class="ptble">
+                                <div class="add-lessons-form" [formGroup]="form" [ngStyle]="{'width': screenWidth+'px'}">
+                                    <!-- <form [formGroup]="configForm"> -->
+                                    <ng-container formArrayName="lessons">
+                                        <table class="table table-hover configureTargetTabe" *ngIf="mgCTList" data-id="{{item._id}}">
+                                            <tr>
+                                                <th>Source Name</th>
+                                                <th>Source Ip</th>
+                                                <th>Source Port</th>
+                                                <th>Source Location</th>
+                                                <th>Source VLan</th>
+                                                <th>Source Host</th>
+                                                <th>Source Storage</th>
+                                                <th>Source VCenter</th>
+                                                <th>Target Name</th>
+                                                <th>Target Ip</th>
+                                                <th>Target Port</th>
+                                                <th>Target VLan</th>
+                                                <th>Target Host</th>
+                                                <th>Target Storage</th>
+                                                <th>Target VCenter</th>
+                                                <!-- <th>Future Storage</th>
+                                                <th>Replication Start Date</th>
+                                                <th>Replication End Date</th>
+                                                <th>Cut Over Date</th> -->
+
+                                            </tr>
+                                            <!-- <tr *ngFor="let ctItem of expConfigData; let ind = index;"> -->
+                                            <tr *ngFor="let lessonForm of lessons.controls; let i = index">
+                                                <ng-container class="lesson-form-row" [formGroup]="lessonForm">
+
+                                                    <td><input formControlName="mgId" type="hidden" [readonly]="sDetailsText"> <input class="w3-input w3-border" formControlName="sName" placeholder="Name"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sIp" placeholder="Ip"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sPort" placeholder="Port"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sVlan" placeholder="VLan"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sHost" placeholder="Host"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sStorage" placeholder="Storage"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sVcenter" placeholder="VCenter"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="sLocation" placeholder="Source Location"></td>
+
+                                                    <td><input class="w3-input w3-border" formControlName="tName" placeholder="Name"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="ip" placeholder="Ip"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="port" placeholder="Port"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="vlan" placeholder="VLan"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="host" placeholder="Host"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="storage" placeholder="Storage"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="vcentre" placeholder="VCentre"></td>
+                                                    <!-- <td><input class="w3-input w3-border" formControlName="futureStorage" placeholder="Future Storage" [readonly]="futureStorage"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="rep_start_date" placeholder="VCenter" [readonly]="rep_start_date"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="rep_end_date" placeholder="VCenter" [readonly]="rep_end_date"></td>
+                                                    <td><input class="w3-input w3-border" formControlName="cut_over_date" placeholder="VCenter" [readonly]="cut_over_date"></td> -->
+                                                </ng-container>
+                                            </tr>
+                                        </table>
+                                        <!-- </form> -->
+                                    </ng-container>
+                                </div>
+
+                                <div class="row savebtn">
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-default">Cancel</button>
+                                        <button type="button" class="btn btn-default" (click)="configTargetSave();">Save</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+            </ng-container>
+
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Migration Group - Resource Data</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Resource Id</th>
+                                    <th>Source Port</th>
+                                    <th>Source Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let subItem of mrGPopupData">
+                                    <td>{{ subItem.id }}</td>
+                                    <td>{{ subItem.source_details.port }}</td>
+                                    <td>{{ subItem.source_details.location }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

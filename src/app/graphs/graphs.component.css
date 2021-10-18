@@ -1,0 +1,63 @@
+
+.header2
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-bottom: 12px;
+}
+.header2 .btn{
+    width: 214px;
+height: 36px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #231F20;
+opacity: 1;
+text-align: center;
+letter-spacing: 0px;
+color: #231F20;
+opacity: 1;
+}
+.header 
+{
+    padding-top: 40px;
+    border-bottom: 2px solid #cccccc;
+}
+th{
+    
+      padding:5px;
+    }
+
+.header h3{
+   display: inline;
+    
+}
+.header a{
+    float:right;
+    margin-top: -14px;
+}
+.table {
+    display: block;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin: 0 auto;
+    
+    white-space: nowrap;
+    max-height: 400px;
+    overflow: auto;
+    border: 1px solid;
+    margin-top: 10px;
+    
+  }
+  #dropdwn{
+      margin: 0 auto;
+      position: relative;
+      left:422px;
+      width: 200px;
+      text-align: left;
+font: 15px/14px fort;
+letter-spacing: 0px;
+color: #1C1E25;
+opacity: 1;
+  }
+
+  

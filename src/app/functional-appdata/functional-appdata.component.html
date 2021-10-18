@@ -1,0 +1,94 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row network-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <h2 *ngIf="paramType"><img src="assets/images/analyse.svg" />Utilization and traffic on {{ paramType }}</h2>
+            <a routerLink="/networkView"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+
+
+        <div class="dataSecContainer">
+            <h3>Functional Data</h3>
+            <div class="functionalData">
+                <div class="functionalTable" *ngIf="appcompData">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Device</th>
+                                <th>What</th>
+                                <th>Dependent</th>
+                                <th>Depends On</th>
+                                <th>Customer / Owner</th>
+                                <th>Customer Affected</th>
+                                <th>Custom Fields</th>
+                                <th>Notes</th>
+                            </tr>
+                            <tr>
+                                <td>{{ appcompData.device }}</td>
+                                <td>{{ appcompData.what }}</td>
+                                <td>{{ appcompData.dependent }}</td>
+                                <td>{{ appcompData.depends_on }}</td>
+                                <td>{{ appcompData.cust_owner }}</td>
+                                <td>{{ appcompData.custs_affected }}</td>
+                                <td>{{ appcompData.custom_fields }}</td>
+                                <td>{{ appcompData.notes }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="otherData">
+                    <div class="performance">
+                        <label for="performance">Performance</label>
+                        <label for="utilization">Utilization</label>
+                        <label for="performance">Performance</label>
+                    </div>
+                    <div class="annotate" *ngIf="movegroup_data">
+                        <label for="annotate">Annotate : {{ movegroup_data.annotate }}</label>
+                        <label for="tagid">Tag ID : {{ movegroup_data.tag }}</label>
+                        <label for="Move Group Id">Move Group Id : {{ movegroup_data.movegroup_id }}</label>
+                    </div>
+                </div>
+            </div>
+            <h3>Functional Data</h3>
+            <div class="nonfunctionalData">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Stake Holders </th>
+                            <th>Name </th>
+                            <th>Eamil</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Type</th>
+
+                        </tr>
+
+                        <ng-container *ngIf="non_funct_data">
+                            <ng-container *ngFor="let res of non_funct_data | keyvalue">
+                                <ng-container *ngFor="let item of res.value">
+                                    <tr>
+                                        <td> <b>{{res.key}}</b></td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>{{item.address}}</td>
+                                        <td>{{item.phone}}</td>
+                                        <td>{{item.type}}</td>
+                                    </tr>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+
+                    </tbody>
+                </table>
+                <div class="otherNonFun"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

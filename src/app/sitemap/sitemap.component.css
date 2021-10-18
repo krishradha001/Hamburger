@@ -1,0 +1,113 @@
+.container-fluid {
+  width: 1262px;
+  height: 940px;
+  left: 0px;
+  background: aliceblue;
+}
+
+.loginContainer .row {
+  align-items: center;
+  height: 100%;
+}
+
+.loginContainer {
+  display: block;
+  height: 100%;
+}
+
+svg {
+  width: 145px;
+  height: 72px;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  /* font-family: Verdana-Italic; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+button {
+  height: 50px;
+  background: #f3f8fb 0% 0% no-repeat padding-box;
+  border: 1px solid #27a1d8;
+  opacity: 1;
+}
+.btn {
+  text-align: center;
+  letter-spacing: 0px;
+  color: #025b95;
+  opacity: 1;
+  font-family: Verdana;
+  font-size: 20px;
+}
+p {
+  height: 17px;
+  font-style: italic;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #bbbcbd;
+  opacity: 1;
+  font-size: 13px;
+  font-family: Verdana-Italic;
+  margin-bottom: 0;
+  position: relative;
+  top: 15px;
+}
+h3 {
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #053e66;
+  text-shadow: 0px 5px 10px #0000001a;
+  opacity: 1;
+  margin-bottom: 0;
+  right: 10px;
+  position: relative;
+}
+
+h4 {
+  font-size: 28px;
+  height: 34px;
+  text-align: center;
+  letter-spacing: 4.2px;
+  color: #053e66;
+  opacity: 1;
+  border-bottom-width: 5px;
+  border-bottom-style: groove;
+  border-color: #27a1d8;
+  top: -5px;
+  position: relative;
+}
+
+.form-label-group {
+  margin-bottom: 1rem;
+}
+
+.cardheadItems {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.cardheadItems img {
+  position: relative;
+  top: 15px;
+  right: 10px;
+}
+
+.form-label-group input {
+  height: 50px;
+}
+
+.form-label-group {
+  padding-bottom: 26px;
+  margin-bottom: 0;
+}
+
+.card-body {
+  padding: 50px 50px 37px 50px;
+}

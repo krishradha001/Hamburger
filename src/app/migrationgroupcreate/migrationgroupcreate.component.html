@@ -1,0 +1,359 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+    <div class="row">
+        <div class="col-md-12" class="header">
+            <h2><img src="assets/images/Shape-costcomp.svg" />Migration Group - Create Target Size</h2>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                <a routerLink="/migrationgrouptarget"><button class="btn btn-outline-secondary"
+                        type="button">Back</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="cost container">
+        <div class="inputSec">
+            <div class="inputCont">
+                <label id="cost">Cost Estimation:</label>
+                <select class="form-control" id="Mig">
+                    <option value="all" selected="selected">CM-001</option>
+
+                </select>
+                <label>Cost:</label>
+                <select class="form-control" id="Mig">
+                    <option value="all" selected="selected">$500-$1500</option>
+
+                </select>
+                <label>Compute:</label>
+                <select class="form-control" id="Mig">
+                    <option value="all" selected="selected">4-8 Core</option>
+
+                </select>
+
+            </div>
+
+        </div>
+        <div class="cost1container" *ngFor="let devices of cloudcosting"  >
+            
+            <div class="row" >
+                <div class="col-md-2">
+                    
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                    <div class="p-2 bd-highlight" class="group">{{devices.Migration_Group}}</div>
+                 </div>
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/VM.svg" style="height: 20px;"/>VM/PHYS
+                            <span class="MEM">{{devices.vm}}</span>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />
+                            <span class="MEM">Memory:{{devices.memory}}</span>
+                        </div>    
+                        <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />
+                            <span class="MEM">Compute:{{devices.compute}}</span>
+                            
+                        </div>
+                        <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />
+                            <span class="MEM">OS:{{devices.os}}</span>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />
+                            <span class="MEM">Storage:{{devices.Storage}}</span>
+                            
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                            <span class="MEM">DB Paas:{{devices.DB_PaaS}}</span>
+                            
+                        </div>      
+        
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight">
+                            <span class="MEM">Total:</span>
+                    
+                        </div>      
+        
+
+                    </div>
+                </div>
+            </div>
+              
+            <div class="row" *ngFor="let device of googlecloudcosting">
+                <div class="col-md-2">
+                    <!-- <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{device.value}}" (change)="onItemChange(device)"/>  -->
+                    <input type="radio" [(ngModel)]="radioSelected"  name="list_name" value="{{googlecloudcosting1}}"  (change)="getcloudname(googlecloudcosting1)"/> 
+
+                    <img src="assets/Google.png" >
+      
+                
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><button (click)="cloud(devices.Migration_Group,device.cloud_name)"><img
+                                        src="assets/images/view.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><button (click)="cloudedit(devices.Migration_Group,device.cloud_name)"><img src="assets/edit.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><img src="assets/delete.svg" /></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />
+                            <span class="MEM">{{device.memory}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />
+                            <span class="MEM">{{device.compute}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />
+                            <span class="MEM">{{device.os}} </span>
+                        </div> 
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.Cost}}
+                </div>
+
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />
+                            <span class="MEM">{{device.storage}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.storage_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        
+                        <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                            <span class="MEM">{{device.DB_PaaS}}</span>
+                        </div>    
+        
+
+                    </div>
+                   
+                </div>
+                <div class="col-md-1">
+                    {{device.db_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight">
+                            <p class="amount"> {{device.total_cost}}</p>
+                            
+                        </div>      
+        
+
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngFor="let device of awscloudcosting">
+                <div class="col-md-2">
+                    <!-- <input type="radio" [(ngModel)]="radioSelected"  value="{{device.value}}" name="list_name" (change)="onItemChanges(device)"/>  -->
+                    <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{awscloudcosting1}}"   (change)="getcloudname(awscloudcosting1)"/> 
+                    <img src="assets/Amazon.png">
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><button (click)="awscloud(devices.Migration_Group,device.cloud_name)"><img
+                                        src="assets/images/view.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><button (click)="awscloudedit(devices.Migration_Group,device.cloud_name)"><img src="assets/edit.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><img src="assets/delete.svg" /></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />
+                            <span class="MEM">{{device.memory}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />
+                            <span class="MEM">{{device.compute}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />
+                            <span class="MEM">{{device.os}} </span>
+                        </div> 
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.Cost}}
+                </div>
+
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />
+                            <span class="MEM">{{device.storage}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.storage_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        
+                        <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                            <span class="MEM">{{device.DB_PaaS}}</span>
+                        </div>    
+        
+
+                    </div>
+                   
+                </div>
+                <div class="col-md-1">
+                    {{device.db_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight">
+                            <p class="amount"> {{device.total_cost}}</p>
+                            
+                        </div>      
+        
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" *ngFor="let device of azurecloudcosting">
+                <div class="col-md-2">
+                    <!-- <input type="radio" [(ngModel)]="radioSelected"  value="{{device.value}}" name="list_name" (change)="onItemazureChanges(device)"/>  -->
+                    <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{azurecloudcosting1}}"  (change)="getcloudname(azurecloudcosting1)"/> 
+                    <img src="assets/Azure.png" >
+
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><button (click)="azurecloud(devices.Migration_Group,device.cloud_name)"><img
+                                        src="assets/images/view.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><button (click)="azurecloudedit(devices.Migration_Group,device.cloud_name)"><img src="assets/edit.svg" /></button></div>
+                        <div class="p-2 bd-highlight"><img src="assets/delete.svg" /></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />
+                            <span class="MEM">{{device.memory}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />
+                            <span class="MEM">{{device.compute}} +</span>
+                        </div> 
+                        <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />
+                            <span class="MEM">{{device.os}} </span>
+                        </div> 
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.Cost}}
+                </div>
+
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />
+                            <span class="MEM">{{device.storage}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    {{device.storage_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        
+                        <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                            <span class="MEM">{{device.DB_PaaS}}</span>
+                        </div>    
+        
+
+                    </div>
+                   
+                </div>
+                <div class="col-md-1">
+                    {{device.db_cost}}
+                </div>
+                <div class="col-md-1">
+                    <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                        <div class="p-2 bd-highlight">
+                            <p class="amount"> {{device.total_cost}}</p>
+                            
+                        </div>      
+        
+
+                    </div>
+                </div>
+            </div>
+  
+            <div class="row">
+
+
+                <div class="col-md-12" *ngFor="let devices of cloudcosting"  >
+                    <div class="d-grid gap-2 d-md-flex justify-content-end">
+
+                        <a routerLink="/migrationgrouptarget"><button class="btn btn-outline-secondary"
+                                type="button">Cancel</button></a>
+                                <a routerLink="/migrationgrouptarget" *ngIf="id"><button class="btn btn-outline-secondary" type="button" (click)="savetarget()">Save Target Size</button></a>
+                        <!-- <button class="btn btn-outline-secondary" type="button" (click)="savetarget(devices.Migration_Group,{{googlecloudcosting1}} ,{{awscloudcosting1}},{{azurecloudcosting1}})">Save Target Size</button> -->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,22 @@
+.container-fluid {
+  width: 100%;
+  height: 500px;
+  /* margin-top: -48px; */
+  left: 0px;
+  background: aliceblue;
+  padding-left: 0px;
+}
+.justify-content-around {
+  -ms-flex-pack: distribute !important;
+  justify-content: space-around !important;
+  position: relative;
+  top: 116px;
+}
+img {
+  vertical-align: middle;
+  border-style: none;
+  position: relative;
+  top: 37px;
+  align-items: center;
+  left: 19px;
+}

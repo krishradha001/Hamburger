@@ -1,0 +1,142 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+  <div class="container-fluid">
+      <app-counts-list></app-counts-list>
+      
+<!-- display the records count in card items as progress bar for discovery section -->
+<div class="row network-body-sec">
+    <h2><img src="assets/images/Shape-costcomp.svg"/>Move Group View <a routerLink="/migrate"><button type="button" class="btn btn-info">Back</button></a></h2>
+
+    <div class="dataSecContainer">
+        <div class="groupsec">
+            <div class="groupInfo">
+                <!-- <label for="">Group ID : G001</label>
+                <label for="">Complexity : medium</label> -->
+                <div class="buttonsSec">
+                    <button type="button" class="btn btn-default">Sizing</button>
+                    <button type="button" class="btn btn-default">Performance</button>
+                </div>
+                <table class="table table-hover" >
+                    <tbody>
+                    <tr style="font-size: 11px;">
+                        <th style="width: 49px;">Exp</th>
+                
+                        <th style="width: 49px;">ID</th>
+                    <th style="width: 100px;">Main Device</th>
+                    <th style="width: 200px; padding-left: 25px;">Dependent Device</th>
+                    <th style="padding-left: 25px;" >Applications</th>
+                    <th>Services</th>
+                  
+                </tr>
+                    <tr *ngFor="let device of movegroup; let i = index " style="font-size: 10px;">
+                        <a class="btn btn-link" (click)="device.hideme=!device.hideme">
+                            <i class="material-icons" *ngIf="!device.hideme">
+                              +
+                            </i>
+                            <i class="material-icons" *ngIf="device.hideme">
+                                -
+                              </i>
+                            </a>
+                              
+
+                        <td>{{device._id}} </td>
+                        <td style="overflow: hidden;width: 100px;">{{ device.main_device}} </td>
+                        
+                              
+                    
+                        <td >
+                            
+                            <ul >  <li>{{ device.dependent_devices[0]}}</li></ul>
+                            
+                          
+                            <tr *ngIf="device.hideme">           
+                        
+                             <ul *ngFor="let devices of device.dependent_devices" >  <li >{{ devices}}</li></ul> </td>
+                            <td><ul >  <li *ngIf="device.applications[0]">{{ device.applications[0]}}</li></ul>
+                            <ng-container  *ngIf="device.hideme"><ul *ngFor="let devices of device.applications"><li>{{ devices }}</li></ul> </ng-container></td>
+                           
+                            <td><ul >  <li *ngIf="device.services[0]">{{ device.services[0]}}</li></ul>
+                                <ng-container  *ngIf="device.hideme"><ul *ngFor="let devices of device.services"><li>{{ devices }}</li></ul> </ng-container></td>
+                        
+                                <!-- <td  *ngIf="device.hideme">{{ device.services}} </td> -->
+                           
+                    
+                
+                    </tbody>
+                    </table>
+                    <!-- DivTable.com -->
+                
+            </div>
+          
+            
+        </div>
+
+        <!-- <div class="groupsec">
+            <div class="groupInfo">
+                <label for="">Group ID : G006</label>
+                <label for="">Complexity : medium</label>
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                    <th>Main Device</th>
+                    <th>Dependent Device</th>
+                    <th>Services</th>
+                    <th>Applications</th>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>CMDB</td>
+                    <td>prometheus</td>
+                    <td>MySQL - promethus_server</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>webserver-qa</td>
+                    <td>nrpe</td>
+                    <td>Unix Hosts File - promethus_server</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>grafana_server</td>
+                    <td>script_azure</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>promethus_server</td>
+                    <td>Icinga_server</td>
+                    <td>script_aws</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>mysqld</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>mysqld_safe</td>
+                    <td>&nbsp;</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                 
+            </div>
+            <div class="buttonsSec">
+                <button type="button" class="btn btn-default">Sizing</button>
+                <button type="button" class="btn btn-default">Performance</button>
+            </div> -->
+            
+        <!-- </div>
+
+        
+    </div> -->
+</div>
+     
+  </div>
+
+
+  

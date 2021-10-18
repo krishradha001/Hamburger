@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="col-md-6">
+        <div class="first-row">
+            <button [ngClass]="{'highlight': 'health'===id }" (click)="ontag('health')" >Health</button>
+            <button [ngClass]="{'highlight': 'task_progress'===id }" (click)="ontag('task_progress')">Progress</button>
+            <button [ngClass]="{'highlight': 'task_details'===id }" (click)="ontag('task_details')">Task</button>
+            <button [ngClass]="{'highlight': 'issues'===id }"(click)="ontag('issues')">Issues</button>
+        </div>
+        <div class="row">
+            <div class="container" >
+              
+                <div *ngIf="id==='health'" style="padding-top: 59px;">
+                    <ng-container *ngFor="let device of time">
+                    <circle-progress 
+                    [percent]="device._percent "
+                      [radius]="70"
+                    [outerStrokeWidth]="6"
+                    [innerStrokeWidth]="3"
+                    [outerStrokeColor]="'#60C0EA'"
+                    [innerStrokeColor]="'#ADADAD'"
+                    [animation]="true"
+                    [animationDuration]="300" 
+                    [subtitle]="device.clause"
+                  ></circle-progress> 
+                  <!-- <circle-progress 
+                    [percent]="device.profit_percent"
+                      [radius]="70"
+                    [outerStrokeWidth]="6"
+                    [innerStrokeWidth]="3"
+                    [outerStrokeColor]="'#60C0EA'"
+                    [innerStrokeColor]="'#ADADAD'"
+                    [animation]="true"
+                    [animationDuration]="300" 
+                    [subtitle]="device.clause"
+                  ></circle-progress>  -->
+             
+                </ng-container>
+                </div>
+         
+                <div *ngIf="id==='task_progress'">
+                    <!-- <canvas id="myChart4"></canvas> -->
+                    <canvas id="mytask"></canvas>
+                    <!-- <div width="100%"><canvas id="myChart1" width="400" height="400"></canvas></div> -->
+                </div>
+                <div *ngIf="id==='task_details'">
+                    <!-- <canvas id="myChart3"></canvas> -->
+                    <canvas id="mydetail"></canvas>
+                </div>
+                <div *ngIf="id==='issues'">
+                    <canvas id="myissues"></canvas>
+                    
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    
+        <!-- Columns are always 50% wide, on mobile and desktop -->
+      
+            <div class="col-md-6">
+                <div class="row migrationDataSpecific">
+                    <h5 class="mb-5">Migration Data Specific</h5>
+                    <div class="w-100"></div>
+                    <div class="col mb-4">
+                        <img class="mb-3" src="assets/Group-98.svg" /><label>Migrations Waves</label>
+                    </div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-97.svg" /><label>Migration Groups</label></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-108.svg" /><label>Compatibility</label></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-109.svg" /><label>Recommendations</label></div>
+                    <div class="w-100"></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-102.svg" /><label>Applications</label></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-104.svg" /><label>Infrastructure</label></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-105.svg" /><label>Operating System</label></div>
+                    <div class="col mb-4"><img class="mb-3" src="assets/Group-110.svg" /><label>Softwares</label></div>
+                </div>
+            </div>
+
+    
+
+
+</div>

@@ -1,0 +1,76 @@
+.count-cards .card-parent {
+    margin: 0 1%;
+}
+
+.count-cards .card-parent .card-body {
+    padding: 4px;
+    border-radius: 0;
+}
+
+.card-parent .card {
+    border-radius: 0;
+}
+
+.light-blue .card-body {
+    border: #55b5bc 1px solid;
+}
+
+.red .card-body {
+    border: #df4324 1px solid;
+}
+
+.blue .card-body {
+    border: #245b90 1px solid;
+}
+
+.orange .card-body {
+    border: #ea973e 1px solid;
+}
+
+.count-cards .card-parent .card-body h3 {
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.count-cards .card-parent .card-body span {
+    font-size: 18px;
+}
+
+.light-blue {
+    color: #55b5bc;
+    background-color: transparent !important;
+}
+
+.red {
+    color: #df4324;
+    background-color: transparent !important;
+}
+
+.blue {
+    color: #245b90;
+    background-color: transparent !important;
+}
+
+.orange {
+    color: #ea973e;
+    background-color: transparent !important;
+}
+
+.row.count-cards {
+    padding: 25px 0;
+}
+
+.card-items .card-body {
+    padding: 0;
+}
+
+.card-deck.card-items h2 {
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #1c1e25;
+}
+.arrow
+{
+    display: contents;
+}

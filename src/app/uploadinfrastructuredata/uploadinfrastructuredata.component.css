@@ -1,0 +1,244 @@
+.header 
+{
+    padding-top: 40px;
+    border-bottom: 2px solid #cccccc;
+}
+
+
+.header h3{
+   display: inline;
+    
+}
+.header a{
+    float:right;
+    margin-top: -14px;
+}
+.header img{
+    padding-bottom: 6px;
+}
+.col-md-6{
+    background: #FFFFFF;
+}
+.container-fluid{
+    display: inline-block;
+}
+p{
+    padding-top: 12px;
+    text-align: left;
+letter-spacing: 0px;
+color: #231F20;
+opacity: 1;
+}
+.col-md-6
+{
+    border: 1px solid #D7DBEC;
+    display: inline-block;
+    padding:0px;
+    
+}
+.template-header
+{
+    background: #78C6A3;
+    border-bottom: 1px solid #78C6A3;
+}
+.container{
+    display: flex;
+    column-gap: 17px;
+    justify-content: center;
+}
+/* .custom-file {
+    display: block;
+    width: auto;
+    font-size: 16px;
+    margin-top: 30px;
+    
+    
+} */
+
+.input-group {
+    padding-top: 49px;
+    /* width: 511px; */
+    align-items: center;
+    padding-left: 39px;
+    padding-right: 65px;
+}
+.body{
+    text-align: left;
+letter-spacing: 0px;
+opacity: 1;
+margin-top: 123px;
+text-align: left;
+font: normal normal 300 16px/24px;
+letter-spacing: 0px;
+color: #231F20;
+padding: 0px 7px 3px;
+}
+.body1
+{
+    border-bottom: 2px solid #D7E0E3;
+}
+.button{
+    display: flex;
+    /* float: right; */
+    justify-content: flex-end;
+    padding-right: 0px;
+    padding: 9px;
+    border-bottom: 1px solid #D7E0E3;
+}
+.row1
+{
+    border-bottom: 2px solid #D7E0E3;
+    border-top: 2px solid #D7E0E3;
+}
+
+#icn
+{
+    border: none;
+}
+
+  /* .custom-file label {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background: linear-gradient(40deg, #ff6ec4, #7873f5);
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+  } */
+  /* .custom-file
+  {
+    
+      display: contents !important;
+  } */
+  /* #inputGroupFile02 label{
+      display: none;
+  }
+  .text{
+    width: 292px !important;
+    /* top: 67px; */
+    /* position: absolute  !important;
+    top: 96px  !important;
+    right: 191px  !important;
+  } */ 
+  .btn-file-upload{
+    width: 187px;
+    position:relative;
+}
+
+.btn-file-upload:after{
+   content:  attr(value);
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;    
+   width: 48%;
+   background: #795548;
+   color: white;
+   border-radius: 2px;
+   text-align: center;
+   font-size: 12px;
+   line-height: 2;
+}
+  .file
+  {
+      display: none;
+      visibility:none;
+  }
+  .browse
+  {
+      width: 122px;
+      height: 31px;
+      border: 1px solid ;
+      position: absolute;
+      right:100px;
+  }
+  #input    {
+      content: 'Browse';
+      visibility: hidden;
+  }
+  .custom-file-input:lang(en)~.custom-file-label::after {
+    content: "Browse";
+    visibility: hidden;
+}
+  .custom-file-input {
+    visibility: hidden;
+    width:0px;
+    content: 'Browse';
+  }
+  .custom-file-input1 {
+    visibility: hidden;
+    width:0px;
+    content: 'Cancel';
+  }
+ 
+ 
+  .form-control
+  {
+      width: 315px;
+  }
+ .button1
+ {
+     
+     height: 33px;
+     width: 93px;
+ }
+ .table thead th {
+    vertical-align: bottom;
+    border-bottom: 0px solid #dee2e6;
+    font-size: 12px;
+
+}
+.body a{
+    color: #006E74;
+    text-decoration: underline;
+    
+}
+#heading{
+    font: 18px fort-bold;
+ 
+    padding-left: 7px;
+}
+#head2{
+    font: 18px fort-bold;
+}
+#head3{
+    position: relative;
+    top: 9px;
+    left: 18px;
+    font: 18px fort-book;
+    color: #FFFFFF;
+}
+#btns{
+    text-align: left;
+    font: normal normal normal 16px/18px Helvetica Neue;
+    letter-spacing: 0px;
+    color: #231F20;
+    opacity: 1;
+    border: 1px solid;
+    border-radius: 0px;
+    text-align: center;
+}
+#btns1{
+    text-align: left;
+    font: normal normal normal 16px/18px Helvetica Neue;
+    letter-spacing: 0px;
+    color: #231F20;
+    opacity: 1;
+    border: 1px solid;
+    border-radius: 0px;
+    text-align: center;
+    height: 38px;
+    background-color: #FFFFFF;
+}
+#head4
+{
+    font: 18px fort-book;
+    padding-left: 10px;
+}

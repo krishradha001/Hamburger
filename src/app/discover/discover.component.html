@@ -1,0 +1,290 @@
+<app-header></app-header>
+<div class="container-fluid">
+
+    <div class="container-fluid">
+        <app-counts-list></app-counts-list>
+        <div class="container-header" style="margin: 0px -21px-26px;">
+            <h3><img src="assets/images/discover.svg" />Configure</h3>
+            <div class="device">
+                <select class="form-control1 form-control-sm" [(ngModel)]="selectedDevice" (change)="configure_data();">                    
+                    <option *ngFor="let device of devicesList" value= '{{device}}' >{{device | titlecase}}</option>                    
+                <!-- <option value= 'Device42' >Device 42</option>
+                <option value = "AWS Migration">AWS Migration Hub</option>
+                <option value="Azure Migration">Azure Migrate</option>
+                <option value="Hystax">Hystax</option> -->
+            </select>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end clear">
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button" id="back">Back</button></a>
+        </div>
+
+    </div>
+
+
+    <div class="container-header2" style="text-align: center; ">
+        <h2>{{selectedDevice}} Controls</h2>
+    </div>
+
+    <!-- for device 42-->
+    <div class="container col-md-12" *ngIf="selectedDevice == 'Device42'">
+
+        <ul>
+            <div class="list" *ngFor="let device of config">
+                <div class="row no-gutters">
+
+                    <!-- individual items starts-->
+                    <div class="col-6 col-md-4">
+                        <label>1.Host</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="dynamicVariable" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.host">
+                                <button (click)="dynamicVariable = !dynamicVariable">
+                                        <img src="assets\edit.png" />
+                                    </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+
+                    <!-- individual items starts-->
+                    <div class="col-6 col-md-4">
+                        <label>2.URL</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+
+                                <input type="text" [disabled]="URL" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.url">
+                                <button (click)="URL = !URL">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>3.Device Details</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="devices" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.devicedetails">
+
+                                <button (click)="devices = !devices">
+                                            <img src="assets\edit.png" />
+                                        </button>
+
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>4.Software Details </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="software" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.softwaredetails">
+                                <button (click)="software = !software">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>5.AppComp Details </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="app" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.appcompdetails">
+                                <button (click)="app = !app">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>6.Service Instances  </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="service" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.serviceinstances">
+                                <button (click)="service = !service">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>7.Impact List  </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="impact" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.impactlist">
+                                <button (click)="impact = !impact">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>8.Load Mount Point Data </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="load" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.loadmountpointdata">
+                                <button (click)="load = !load">
+                                                <img src="assets\edit.png" />
+                                            </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>9.Vendors </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="vendors" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.vendors">
+                                <button (click)="vendors = !vendors">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end clear" style="padding-top: 18px;">
+                <button class="btn btn-outline-secondary" type="button" (click)="configured_data()">Save</button>
+            </div>
+        </ul>
+    </div>
+
+    <!-- for hystax  -->
+    <div class="container col-md-12" *ngIf="selectedDevice == 'Hystax'">
+
+        <ul>
+            <div class="list" *ngFor="let device of config ">
+                <div class="row no-gutters">
+
+                    <!-- individual items starts-->
+                    <div class="col-6 col-md-4">
+                        <label>1. Hystax Url</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="hystax_urlEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.hystax_url">
+                                <button (click)="hystax_urlEnbled = !hystax_urlEnbled">
+                                        <img src="assets\edit.png" />
+                                    </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+
+                    <!-- individual items starts-->
+                    <div class="col-6 col-md-4">
+                        <label>2. Email</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+
+                                <input type="email" [disabled]="emailEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.email">
+                                <button (click)="emailEnbled = !emailEnbled">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>3.Password</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="password" [disabled]="passwordEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.password">
+
+                                <button (click)="passwordEnbled = !passwordEnbled">
+                                            <img src="assets\edit.png" />
+                                        </button>
+
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <label>4. Get Token </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="get_tokenEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.get_token">
+                                <button (click)="get_tokenEnbled = !get_tokenEnbled">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>5. Get Cloudsite Details</label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="get_cloudsite_detailsEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.get_cloudsite_details">
+                                <button (click)="get_cloudsite_detailsEnbled = !get_cloudsite_detailsEnbled">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                    <div class="col-6 col-md-4">
+                        <label>6. Get Cloudsite Devices  </label>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <div class="control">
+                            <ng-container>
+                                <input type="text" [disabled]="get_cloudsite_devicesEnbled" class="form-control" id="formGroupExampleInput" required="" [(ngModel)]="device.get_cloudsite_devices">
+                                <button (click)="get_cloudsite_devicesEnbled = !get_cloudsite_devicesEnbled">
+                                            <img src="assets\edit.png" />
+                                        </button>
+                            </ng-container>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end clear" style="padding-top: 18px;">
+                <button class="btn btn-outline-secondary" type="button" (click)="configured_data()">Save</button>
+            </div>
+        </ul>
+    </div>
+</div>

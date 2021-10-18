@@ -1,0 +1,257 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row migrationGroup-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <h2><img src="assets/images/analyse.svg" />Migration</h2>
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+
+    <div class="MGQTablesDiv">
+        <div class="table-responsive">
+            <div class="mgWaveHeader">
+                <h2 style="padding-top: 10px;">Migration Que</h2>
+            </div>
+            <div class="migrationWaveInner">
+                <table class="table mgGroupTable">
+                    <thead>
+                        <tr>
+                            <th>Migration Group</th>
+                            <th>Count</th>
+                            <th>Source ID</th>
+                            <th>Target IP</th>
+                            <th>Target Port</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr #mgTR *ngFor="let item of mRGList" (click)="selectmgItem(item._id);" [ngClass]="{'active': selectedMGITemStatus === item._id, 'disabled': item.added === true}">
+                            <td>{{ item._id }}</td>
+                            <td>{{ item.resource_count}}</td>
+                            <td>
+                                <ng-container *ngIf="item.resource_data.length == 0">
+                                    <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.id}}
+                                            </ng-container>
+                                        </span>
+                                </ng-container>
+
+                                <ng-container *ngIf="item.resource_data.length > 0">
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                        <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.id}}
+                                                <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                                <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                                
+                                            </ng-container>
+                                        </span> More
+                                        </button>
+                                </ng-container>
+
+                            </td>
+                            <td>
+                                <ng-container *ngIf="item.resource_data.length == 0">
+                                    <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.source_details.port}}
+                                            </ng-container>
+                                        </span>
+                                </ng-container>
+
+                                <ng-container *ngIf="item.resource_data.length > 0">
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                        <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.source_details.port}}
+                                                <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                                <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                                
+                                            </ng-container>
+                                        </span> More
+                                        </button>
+                                </ng-container>
+                            </td>
+                            <td>
+                                <ng-container *ngIf="item.resource_data.length == 0">
+                                    <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.source_details.location}}
+                                            </ng-container>
+                                        </span>
+                                </ng-container>
+
+                                <ng-container *ngIf="item.resource_data.length > 0">
+                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setRes(item._id);">
+                                        <span *ngFor="let rdItem of item.resource_data; let i=index">
+                                            <ng-container>
+                                                {{rdItem.source_details.location}}
+                                                <ng-container *ngIf="item.resource_data.length-1 != i">,</ng-container>
+                                                <ng-container *ngIf="item.resource_data.length-1 == i">... </ng-container>
+                                                
+                                            </ng-container>
+                                        </span> More
+                                        </button>
+                                </ng-container>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="moveBtns">
+            <button (click)="addToWaveBlock();" [disabled]="addBtnDisable"><img src="assets/images/addArrow.svg"/> Add</button>
+            <button (click)="removeFrmWaveBlock();" [disabled]="removeBtnDisable"><img src="assets/images/removeArrow.svg"/> Remove</button>
+        </div>
+
+        <div class="table-responsive migrationWave">
+            <div class="mgWaveHeader">
+                <h2 style="padding-top: 10px;">Migration Wave</h2>
+                <div class="mgWaveBtns">
+                    <a routerLink="/timeline"><button>View Timeline</button></a>
+                    <button (click)="createWave();">Create Wave Block</button>
+                </div>
+            </div>
+            <div class="migrationWaveInner">
+                <div class="mainCardSec" #waveBlock>
+
+                    <!--card section starts from here-->
+                    <div class="card" *ngIf="waveBlockCreated">
+                        <div class="card-header">
+                            <label for="Migration Wave Title" class="mgTitle1"> {{ waveBlockName.name }}</label>
+                            <div class="mgTitle2">
+                                <img src="assets/images/calender.svg" />
+                                <label for="Migration Date" class="mgDate"> 03-15-2021 to 03-31-2021 </label>
+                                <img class="arrowup" src="assets/images/arrowUp.svg" />
+                                <img class="arrowdown" src="assets/images/arrowDown.svg" />
+                                <img src="assets/images/clock.svg" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Migration Group</th>
+                                        <th>Count</th>
+                                        <th>Source ID</th>
+                                        <th>Target IP</th>
+                                        <th>Target Port</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let addedItem of waveBlockName.migration_groups" (click)="selectmgwItem(addedItem._id);" [ngClass]="{'active': selectedMGWITemStatus === addedItem._id, 'disabled': addedItem.added === true}">
+                                        <td>{{ addedItem._id }}</td>
+                                        <td>{{ addedItem.resource_count }} </td>
+                                        <td>{{ addedItem.source_id }} </td>
+                                        <td>{{ addedItem.target_id }} </td>
+                                        <td>{{ addedItem.target_port }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="card-footer">
+                                <button (click)="saveWaveBlock();" [disabled]="saveBtnDisable" class="btn">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card section ends here  -->
+
+                    <!--card section starts from here-->
+                    <div class="card" *ngFor="let item of migWaveList">
+                        <div class="card-header">
+                            <label for="Migration Wave Title" class="mgTitle1"> {{item.wave_id}}</label>
+                            <div class="mgTitle2">
+                                <img src="assets/images/calender.svg" />
+                                <label for="Migration Date" class="mgDate"> {{item.wave_start_date}} to {{item.wave_end_date}} </label>
+                                <img class="arrowup" src="assets/images/arrowUp.svg" />
+                                <img class="arrowdown" src="assets/images/arrowDown.svg" />
+                                <img src="assets/images/clock.svg" />
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Migration Group</th>
+                                        <th>Count</th>
+                                        <th>Source ID</th>
+                                        <th>Target IP</th>
+                                        <th>Target Port</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let addedGrps of item.migration_group_data">
+                                        <td>{{ addedGrps._id }}</td>
+                                        <td>{{ addedGrps.resource_count }} </td>
+                                        <td>{{ addedGrps.resource_data[0].id }} </td>
+                                        <td>{{ addedGrps.resource_data[0].target_details.ip }} </td>
+                                        <td> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="card-footer"></div>
+                        </div>
+                    </div>
+                    <!-- card section ends here  -->
+
+                </div>
+                <!-- card main section ends here-->
+
+            </div>
+            <!--Migration wave inner block-->
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Migration Que - Resource Data</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Resource Id</th>
+                                    <th>Source Port</th>
+                                    <th>Source Location</th>
+                                    <th>Target Port</th>
+                                    <th>Target Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of mrGPopupData">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.source_details.port }}</td>
+                                    <td>{{ item.source_details.location }}</td>
+                                    <td>{{ item.target_details.ip }}</td>
+                                    <td>{{ item.target_details.port }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

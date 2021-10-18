@@ -1,0 +1,184 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+    <div class="row">
+        <div class="col-md-12">
+            <h2><img src="assets/images/Shape-costcomp.svg" />Migration Group - Target Sizing</h2>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+                <a routerLink="/wavemoveGroup"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row" style="padding-top: 15px;">
+        <div class="col-md-3">
+            <div class="p1">
+                <p style="height: 21px;"><img src="assets/images/VM.svg" />VM/PHYS</p>
+                <span class="VM">6</span>
+            </div>
+            <div class="mg">
+                <p>Migration Group-101</p>
+            </div>
+            <div class="row1">
+                <p><span>Target Size</span></p>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+
+
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />Memory
+                    <span class="MEM">128-512GB</span>
+                    <span class="MEM1">128-512GB</span>
+                </div>
+
+                <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />Compute
+                    <span class="MEM">30</span>
+                    <div class="MEM1">30</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />OS
+                    <span class="MEM">4</span>
+                    <div class="MEM1">4</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />Storage
+                    <span class="MEM">250TB</span>
+                    <div class="MEM1">250TB</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />DB Paas
+                    <span class="MEM">2</span>
+                    <div class="MEM1">2</div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                <div class="p-2 bd-highlight"><img src="assets/images/view.svg" /></div>
+                <div class="p-2 bd-highlight"><img src="assets/edit.svg" /></div>
+                <div class="p-2 bd-highlight"><img src="assets/delete.svg" /></div>
+            </div>
+        </div>
+
+
+
+    </div> -->
+   
+    <div class="row" *ngFor="let device of targetsizing; let i=index">
+       
+        <div class="col-md-3">
+            <div class="p1">
+                
+                <p style="height: 21px;"><img src="assets/images/VM.svg" />VM/PHYS</p>
+                <span class="VM">{{device.vm}}</span>
+            </div>
+            <div class="mg">
+                <p>{{device.Migration_Group}}</p>
+            </div>
+            <div class="row1">
+                <p>Target Size</p>
+            </div>
+        </div>
+        <div class="col-md-6" >
+
+
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                
+                <div class="p-2 bd-highlight" ><img src="assets/images/memory.svg" />Memory
+                    <span class="MEM">{{device.memory}}</span>
+                    <div class="MEM1" >{{savetargetsizing[i].memory}}</div>
+                    
+                </div>
+
+                <div class="p-2 bd-highlight" ><img src="assets/images/compute.svg" />Compute
+                    <span class="MEM">{{device.compute}}</span>
+                    <div class="MEM1">{{savetargetsizing[i].compute}}</div>
+                </div>
+                <div class="p-2 bd-highlight" ><img src="assets/images/OS.svg" />OS
+                    <span class="MEM">{{device.os}}</span>
+                    <div class="MEM1">{{savetargetsizing[i].os}}</div>
+                </div>
+                <div class="p-2 bd-highlight" ><img src="assets/images/Storage.svg" />Storage
+                    <span class="MEM">{{device.Storage}}</span>
+                    <div class="MEM1">{{savetargetsizing[i].Storage}}</div>
+                </div>
+                <div class="p-2 bd-highlight" ><img src="assets/images/DB.svg" />DB Paas
+                    <span class="MEM">{{device.DB_PaaS}}</span>
+                    <div class="MEM1">{{savetargetsizing[i].DB_PaaS}}</div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-2" *ngIf= "savetargetsizing[i].flag!=false">
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                <div class="p-2 bd-highlight"><img src="assets/images/view.svg" /></div>
+                <div class="p-2 bd-highlight"><img src="assets/edit.svg" /></div>
+                <div class="p-2 bd-highlight"><img src="assets/delete.svg" /></div>
+            </div>
+        </div>
+        <div class="col-md-2"*ngIf= "savetargetsizing[i].flag!=true">
+             <button class="btn btn-outline-secondary justify-content-center"
+                    type="button" (click)="migrationgroup(device.Migration_Group)">Create Target Size</button>
+        </div>
+
+    
+
+    </div>
+    <!-- <div class="row">
+        <div class="col-md-3">
+            <div class="p1">
+                <p style="height: 21px;"><img src="assets/images/VM.svg" />VM/PHYS</p>
+                <span class="VM">6</span>
+            </div>
+            <div class="mg">
+                <p>Migration Group-103</p>
+            </div>
+            <div class="row1">
+                <p>Target Size</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+
+            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />Memory
+                    <span class="MEM">128-512GB</span>
+                    <div class="MEM1">NA</div>
+                </div>
+
+                <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />Compute
+                    <span class="MEM">30</span>
+                    <div class="MEM1">NA</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />OS
+                    <span class="MEM">4</span>
+                    <div class="MEM1">NA</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />Storage
+                    <span class="MEM">250TB</span>
+                    <div class="MEM1">NA</div>
+                </div>
+                <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />DB Paas
+                    <span class="MEM">2</span>
+                    <div class="MEM1">NA</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a routerLink="/migrationgroupcreate"> <button class="btn btn-outline-secondary justify-content-center"
+                    type="button">Create Target Size</button></a>
+        </div>
+
+
+
+    </div> -->
+
+
+
+
+</div>

@@ -1,0 +1,57 @@
+#first-cont{
+    border: 1px solid; 
+    height: 56px; 
+    background: #006E74;
+     padding-right: 19px;
+      padding-top: 13px;
+      }
+#ustlogo
+{
+    align-self: center;
+}
+.header
+{
+    display: inline-block;
+    text-align: center;
+font: normal normal 300 21px/29px fort-light;
+letter-spacing: 0px;
+color: #FFFFFF;
+opacity: 1;
+padding-left: 7px;
+    
+}
+#second-cont{
+ 
+    background: white;  
+        border: 1px solid;
+    position: relative;
+    bottom: 54px;
+    left: 210px;
+    height: 54px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
+
+.float-right {
+    float: right!important;
+    position: relative;
+    position: relative;
+    right: 22px;
+    top: 12px;
+}
+h4
+{
+    padding-top: 11px;
+    padding-left: 25px;
+    letter-spacing: 0px;
+    color: #0097AC;
+    opacity: 1;
+    font-family: Verdana;
+    font-size: 16px;
+
+}
+.continer
+{
+    display: flex;
+}

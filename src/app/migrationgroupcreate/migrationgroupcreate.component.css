@@ -1,0 +1,100 @@
+.justify-content-md-end
+{
+    margin-top: -50px;
+    border-bottom: 2px solid #cccccc;
+    padding-bottom: 6px;
+}
+.inputCont select {
+    width: 250px;
+  }
+  
+  .inputCont label {
+    margin-top: 5px;
+    font: normal normal normal 16px/18px Helvetica Neue;
+  }
+  
+  #Mig
+  {
+    display: inline-block;
+    margin: 8px;
+    font: normal normal bold 15px/14px Arial;
+}
+  /* .cost1container
+  {
+      border:1px solid;
+      height: 200px;
+      width:400px
+  } */
+  .col-md-12
+  {
+    border:1px solid;
+  }
+  .MEM
+{
+    display: block;
+    text-align: center;
+    padding-top: 14px;
+    font: normal normal normal 16px/18px Helvetica Neue;
+}
+.col-md-2
+{
+  border:1px solid #C2BCBE;
+  padding-top: 12px;
+}
+.col-md-3
+{
+  border:1px solid #C2BCBE;
+  padding-top: 12px;
+}
+.col-md-4
+{
+  border:1px solid #C2BCBE;
+  padding-top: 12px;
+}
+.col-md-1
+{
+  border:1px solid #C2BCBE;
+  padding-top: 12px;
+}
+.col-md-7
+{
+  border:1px solid;
+}
+/* .cost1container
+{
+    border:1px solid;
+} */
+.amount
+{
+    padding-top: 21px;
+
+    font: normal normal bold 18px/23px Helvetica Neue;
+}
+.justify-content-end
+{
+    padding-top: 10px;
+}
+#cost 
+{
+  font: normal normal normal 20px/24px Helvetica Neue;
+}
+.group
+{
+  font: normal normal bold 14px/17px Helvetica Neue;
+  display: flex;
+    align-items: center;
+    margin-left: -50px;
+}
+.p-2 > img
+{
+  padding: 3px;
+}
+.p-2
+{
+  font: normal normal normal 16px/18px Helvetica Neue;
+}
+.col-md-2 > img{
+  width: 162px;
+
+    padding-top: 34px;
+}

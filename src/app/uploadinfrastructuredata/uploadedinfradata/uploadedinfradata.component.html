@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="container-fluid" style="background: #F4F7FC;">
+    <div class="header">
+      <img src="assets/images/discover.svg" />
+      <h3 id="heading"> Upload Infrastructure Data</h3>
+      <a routerLink="/uploadinfras"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+    </div>
+    <div class="header2">
+        <p>Upload Infrastructure Data</p>
+        <button class="btn btn-outline-secondary" id="btnupl"  (click)="openDialog()" >
+          Re-upload
+           </button>
+
+        <a routerLink="/graphs"><button class="btn btn-outline-secondary" type="button">Categorize Data</button></a>
+   
+      </div>
+    
+      <table class="table">
+          
+            
+              <thead >
+                <tr style="font-size: 11px; line-height: 11px;" >
+                    <th style="position: sticky; top:0;position: -webkit-sticky; background: #78C6A3;" *ngFor="let item of tablefile | keyvalue: returnZero">{{item.key}}</th>
+                </tr>
+            </thead>
+            <tbody style="max-height: 300px;
+            overflow: auto;" >
+                <tr *ngFor="let items of tablerow" style="font-size: 11px;">
+               <td *ngFor="let item of tablefile | keyvalue: returnZero">{{items[item.key]}}</td>
+                </tr>
+                <!-- \
+                <tr *ngFor="let row of tablerow">
+                    <td *ngFor="let item of tablefile | keyvalue">{{row[item]}}</td>
+                     </tr> -->
+                
+            </tbody>
+          </table>
+        
+        
+
+      
+  
+    </div>

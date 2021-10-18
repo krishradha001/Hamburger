@@ -1,0 +1,46 @@
+.containerHeader
+{
+font-style: verdana;
+padding-top: 11px;
+display: flex;
+}
+.containerHeader h3{
+    margin: 0px -82px 5px;
+}
+
+.justify-content-md-end
+ {
+    justify-content: flex-end!important;
+    margin-top: -35px;
+    padding-bottom: 15px;
+}
+.container-fluid {
+    background: #f2f6fa;
+    border-left: 4px solid;
+    border-color: #025b95;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 35px;
+    margin-left: 19px;
+    padding-top: 8px;
+    margin: 0px 20px 0px;
+    
+}
+.container{
+    border: 1px solid;
+    border-radius: 5px;
+}
+.custom-file-label
+{
+    width:223px;
+}
+button
+{
+    border: none;
+}
+.icon{
+    justify-content: space-evenly;
+    display: flex;
+}

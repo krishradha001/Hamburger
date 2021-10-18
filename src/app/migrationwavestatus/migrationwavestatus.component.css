@@ -1,0 +1,156 @@
+.col-md-9
+{
+    border: 1px solid;
+    display: flex;
+    border-bottom: 2px solid #cccccc;
+    height: fit-content;
+    
+}
+.col-md-12
+{
+    
+    display: flex;
+    bottom:20px;
+    
+}
+.wave
+{
+    display: flex;
+    font-size: 15px/18px;
+    align-items: center;
+    padding-right: 24px;
+    text-align: left;
+
+}
+
+.d-grid 
+{
+ 
+text-align: center;
+
+}
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #dee2e6;
+    border-bottom: 1px solid  #dee2e6;
+    cursor: pointer;
+}
+.btn-group
+{
+    
+height: fit-content;
+
+
+opacity: 1;
+padding-top: 5px;
+}
+.form-control
+{
+    -webkit-appearance: menulist;
+}
+#wave
+{
+    
+    display: contents;
+    right: 20px;
+}
+#wave1
+{
+    
+    display:block;
+    right: 20px;
+}
+#countdropdown
+{
+
+width: 180px;
+height: 27px;
+text-align: left;
+font: normal normal normal 12px/14px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+}
+#tableheading1
+{
+    text-align: left;
+font: normal normal bold 10px/11px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+}
+#tabledata1
+{
+    text-align: left;
+font: normal normal normal  9px/14px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+cursor: pointer;
+}
+#progress
+{
+    text-align: center;
+font: normal normal normal 16px/25px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1px;
+position: relative;
+top: 5px;
+}
+#status
+{
+    text-align: center;
+font: normal normal normal 14px/17px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+}
+#mgid{
+    text-align: left;
+font: normal normal bold 12px/14px Arial;
+letter-spacing: 0px;
+color: #006E74;
+opacity: 1;
+}
+#tot
+{
+    text-align: left;
+font: normal normal normal 12px/14px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+}
+#issue
+{
+    text-align: left;
+font: normal normal bold 12px/14px Arial;
+letter-spacing: 0px;
+color: #FC6A59;
+opacity: 1;
+}
+#device{
+    text-align: left;
+font: normal normal normal 10px/12px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+border: none;
+}
+.fill-height {
+    
+    height:auto !important; 
+    height: 100%; 
+    min-height: 100%;
+}
+#sum
+{
+    text-align: left;
+font: normal normal normal 18px/21px Arial;
+letter-spacing: 0px;
+color: #1C242B;
+opacity: 1;
+}
+
+.header{
+    margin: 0px 0px 6px;
+}

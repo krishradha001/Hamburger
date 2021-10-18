@@ -1,0 +1,237 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- Begin Page Content -->
+<div class="container-fluid analyseCont">
+  <app-counts-list></app-counts-list>
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dependencies</h1>
+   
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+</div>
+
+  <div class="row">
+    <!-- Area Chart -->
+    <div class="col-xl-4 col-lg-4">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div
+          class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
+          <h6 class="m-0 font-weight-bold text-primary">
+            Resources
+          </h6>
+          <div class="dropdown no-arrow">
+            <a
+              class="dropdown-toggle"
+              href="#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+              aria-labelledby="dropdownMenuLink"
+            >
+              <div class="dropdown-header">Dropdown Header:</div>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          <div class="iframeDiv">
+            <ul id="vendroList">
+              <li *ngFor="let item of resourcesList; index as i;"(click)="setRow(i)" [ngClass]="{'highlight': selectedIndex === i}">
+                
+                <a (click)="fetchAppsList(item.device_name)" >{{ item.device_name }}</a>
+                
+              </li>
+             </ul>
+
+            </div>
+        </div>
+      </div>
+    </div>
+<!-- /.col 4 -->
+
+<!-- Area Chart -->
+<div class="col-xl-4 col-lg-4">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div
+      class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+    >
+      <h6 class="m-0 font-weight-bold text-primary">
+        Applications
+      </h6>
+      <div class="dropdown no-arrow">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+          aria-labelledby="dropdownMenuLink"
+        >
+          <div class="dropdown-header">Dropdown Header:</div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="iframeDiv">
+        <ul>
+          <li *ngFor="let item of ApsList; index as i;"(click)="setRow1(i)" [ngClass]="{'highlight': selectedIndex1 === i}">
+            <a (click)="fetchDepList(selectedRes, item['appcomp_name'])">{{ item.appcomp_name }}</a>            
+          </li>
+         </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- /.col 4 -->
+
+<!-- Area Chart -->
+<div class="col-xl-4 col-lg-4">
+  <div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div
+      class="card-header py-3 d-flex flex-row align-items-center justify-content-between"
+    >
+      <h6 class="m-0 font-weight-bold text-primary">
+        Dependency
+      </h6>
+      <div class="dropdown no-arrow">
+        <a
+          class="dropdown-toggle"
+          href="#"
+          role="button"
+          id="dropdownMenuLink"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+          aria-labelledby="dropdownMenuLink"
+        >
+          <div class="dropdown-header">Dropdown Header:</div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="iframeDiv">
+        <ng-container *ngIf="devDepList">
+          <h3>Device Dependencies</h3>
+          <ng-container *ngIf="appCompData && appCompData[0]">
+            <h5>Application Component</h5>
+            <ul>
+              <li *ngFor="let item of appCompData; index as i;">
+                {{ item }}
+              </li>
+             </ul>
+          </ng-container>
+
+          <ng-container *ngIf="devServiceData && devServiceData[0]">
+            <h5>Device Service Data</h5>
+            <ul>
+              <li *ngFor="let item of devServiceData; index as i;">
+                {{ item }}
+              </li>
+             </ul>
+          </ng-container>
+
+          <ng-container *ngIf="devSoftData && devSoftData[0]">
+            <h5>Software Component</h5>
+            <ul>
+              <li *ngFor="let item of devSoftData; index as i;">
+                {{ item }}
+              </li>
+             </ul>
+          </ng-container>
+           
+        </ng-container>
+        <!-- Application Dependencies section goes here -->        
+        <ng-container *ngIf="appDepList">
+          <h5>Application Dependencies</h5>
+
+            <ng-container *ngIf="dependentOn && dependentOn[0]">
+              <h5>Dependent On</h5>
+              <ul>
+                <li *ngFor="let item of dependentOn; index as i;">
+                  {{ item }}
+                </li>
+               </ul>
+            </ng-container>
+                    
+            <ng-container *ngIf="dependsOn && dependsOn[0]">
+              <h5>Depends On</h5>
+              <ul>
+                <li *ngFor="let item of dependsOn; index as i;">
+                  {{ item }}
+                </li>
+               </ul>
+            </ng-container>
+
+            
+              <ng-container *ngIf="appServiceData && appServiceData[0]">
+                <h5>Application Service Data</h5>
+                <ul>
+                  <li *ngFor="let item of appServiceData; index as i;">
+                    {{ item }}
+                  </li>
+                 </ul>
+              </ng-container>
+
+            
+                <ng-container *ngIf="appSoftData && appSoftData[0]">
+                  <h5>Application Software Data</h5>
+                  <ul>
+                    <li *ngFor="let item of appSoftData; index as i;">
+                      {{ item }}
+                    </li>
+                   </ul>
+                </ng-container>
+
+          
+          
+        </ng-container>
+         
+        </div>
+    </div>
+  </div>
+</div>
+<!-- /.col 4 -->
+
+  </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,278 @@
+.migrationGroup-body-sec h2 img {
+    padding-right: 10px;
+    margin: 0;
+    display: none;
+}
+
+div {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.sub-title {
+    border: 2px solid #cccccc;
+    border-bottom: 0;
+    /* width: 100%; */
+    width: -webkit-fill-available;
+    flex-wrap: nowrap;
+    margin-bottom: 0px;
+    justify-content: space-between;
+    display: flex !important;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.sub-title button {
+    padding: 3px 10px;
+}
+
+.sub-title a {
+    float: right;
+    padding: 10px 0;
+}
+
+.title-dateSelector {
+    display: flex;
+    padding: 10px 0;
+}
+
+.title-dateSelector h2 {
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.title-dateSelector input {
+    height: 30px;
+    margin: 0 20px;
+}
+
+.title-dateSelector button {
+    height: 30px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #dddddd;
+}
+
+.timeLineTbl th {
+    text-align: center;
+    vertical-align: middle;
+    min-width: 50px;
+}
+
+.timeLineTbl td:first-child {
+    padding: 0;
+}
+
+.inProgress {
+    background-color: #099AAF;
+}
+
+.hang {
+    background-color: #C0D89F;
+}
+
+.completed {
+    background-color: #68C1CE;
+}
+
+.timeLineTbl td {
+    padding: 0;
+    min-width: 50px;
+    display: table-cell;
+    position: relative;
+    max-width: 50px;
+    width: 50px;
+    height: 30px;
+    padding: 10px 0;
+}
+
+.staticHead {
+    z-index: 10 !important;
+}
+
+.table.table-bordered .progress {
+    height: 0.8rem;
+    border-radius: 1px;
+    background-color: #ffffff;
+    border: 1px #ccc solid;
+    /* border-left: #006E74; */
+}
+
+.progress-bar {
+    color: #707070;
+}
+
+.progress-bar {
+    height: 15px;
+}
+
+.progress {
+    line-height: 15px;
+    height: 1rem !important;
+    text-align: center;
+    display: block;
+}
+
+.progress-bar.error {
+    background-color: red;
+}
+
+table tr {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+table tbody {
+    overflow: hidden;
+}
+
+.overflowHidn {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+table tr:nth-child(2) .topHeader {
+    top: 24px;
+    border-bottom: #707070 1px solid !important;
+}
+
+table tr:nth-child(2) .topHeader:last-child,
+table tr:nth-child(1) .topHeader:last-child {
+    border-right: #707070 1px solid !important;
+}
+
+table tbody tr td:first-child,
+.staticHead {
+    position: sticky;
+    left: -1px;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+table tbody tr td:first-child .thCell {
+    color: #1C242B;
+    border: 0;
+    padding: 8px 8px 8px 25px;
+    border-right: 1px solid #707070;
+    border-left: 1px solid #707070;
+}
+
+table tr:nth-child(2) th:nth-child(1) {
+    border-left: 1px solid #707070;
+}
+
+table tr:nth-child(1) .topHeader .thCell {
+    border: 0;
+    border-top: #707070 1px solid !important;
+}
+
+table tr:nth-child(2) .topHeader .thCell {
+    border: 0;
+    border-bottom: #707070 1px solid;
+}
+
+.table.table-bordered thead tr:first-child th:nth-child(2) {
+    border-left: 1px #006E74 solid !important;
+}
+
+table tr .waveHead {
+    min-width: 150px;
+    line-height: 45px;
+    font-size: 14px;
+    border: #707070 1px solid !important;
+    /* -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.75); */
+    /* border-bottom: 0 !important; */
+    /* border: 1px solid #ccc; */
+}
+
+table thead {
+    background-color: #ffffff;
+}
+
+table .weekStart {
+    border-left: 2px #006E74 solid;
+}
+
+.topHeader {
+    width: 50px;
+    height: 20px;
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 0;
+    /* border: #ccc 1px solid; */
+    padding: 0;
+}
+
+.thCell {
+    /* background-color: #ffffff; */
+    border: #707070 1px solid;
+    /* border: 0; */
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    line-height: 25px;
+    font-size: 12px;
+    color: #1C242B;
+    font-weight: normal;
+}
+
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+    text-align: left;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.container-fluid div.timelineTblDiv {
+    overflow: auto;
+    height: 400px;
+}
+
+
+/* expand collapse code */
+
+tr.hide-table-padding td {
+    padding: 0;
+}
+
+.expand-button {
+    position: relative;
+}
+
+.accordion-toggle .expand-button:after {
+    position: absolute;
+    left: .75rem;
+    top: 50%;
+    transform: translate(0, -50%);
+    content: '-';
+}
+
+.accordion-toggle.collapsed .expand-button:after {
+    content: '+';
+}
+
+.hide-table-padding {
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.hide-table-padding td {
+    height: auto;
+    vertical-align: middle;
+}
+
+.progresStatusVal {
+    color: #ffffff;
+}
+
+table tr .tblcell {
+    width: 50px;
+    max-width: 50px !important;
+}

@@ -1,0 +1,195 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="header">
+    <img src="assets/images/discover.svg" />
+    <h3 id="heading"> Upload Infrastructure Data</h3>
+    <a routerLink="/questionare"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+  </div>
+  <div class="row" id="head2">
+    <p>Upload Document/Template</p>
+
+  </div>
+  <div class="container">
+    <div class="col-md-6">
+      <div class="template-header">
+        <h4 id="head3">Upload Template</h4>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3" >
+          <div class="custom-file"  >
+          
+            <input type="text" class="form-control" [(ngModel)]="selectfile" />
+            <input type="file" class="custom-file-input" id="inputGroupFile02" multiple (change)="selectFile($event)"
+              value="upload" >
+            <label class="custom-file-label" for="inputGroupFile02" style="width: 76px; left: 320px;"
+              *ngIf="!selectfile" id="btns">Browse</label>
+            <label class="custom-file-label" (click)="selectfile=''" style="width: 76px; left: 320px;"
+              *ngIf="selectfile" id="btns">Cancel</label>
+
+          </div>
+         
+          <div class="input-group-append" >
+            <span class="input-group-text" id="" (click)="upload()" style="cursor: pointer;" id="btns1">Upload</span>
+          </div>
+          <!-- <div class="input-group-append" style="float: right;" mat-dialog-actions>
+            <span class="input-group-text" id="uploadbtn" mat-button (click)="upload()">Upload</span>
+          </div> -->
+
+
+       </div>
+
+      
+
+
+      </div>
+      <div class="body1">
+        <p class="body">
+          You may first download the template from <a (click)="downloadtemp()">here</a>. Please get
+          it filled with necessary data. You can upload the filled in template document that contains data about the
+          infrastructure format. Please avoid altering any section headers mentioned in the template.
+        </p>
+        <div class="button">
+          <!-- <button class="btn btn-outline-secondary">Download Template</button> -->
+          <button class="btn btn-outline-secondary" type="button" (click)="downloadtemp()" id="btns">Download Template</button>
+        </div>
+
+        <div class="row1">
+          <p id="head4">Uploaded Templates</p>
+
+        </div>
+        <div class="row2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Document ID</th>
+                <th>Uploaded by</th>
+                <th>Servers</th>
+                <th>Application</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let devices of uploadfile;">
+
+                <td>{{devices.document_id}}</td>
+                <td>{{devices.uploaded_by}}</td>
+                <td>{{devices.servers}}</td>
+                <td>{{devices.applications}}</td>
+                <td><button id="icn">
+                    <img src="assets\eye.svg" />
+                  </button></td>
+
+                <td><button id="icn">
+                    <img src="assets\edit.svg" />
+                  </button></td>
+                <td ><button (click)="infradata(devices.document_id)" id="icn">
+                    <img src="assets\chart.svg" />
+                  </button></td>
+                <td><button id="icn">
+                    <img src="assets\delete.svg" />
+                  </button></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+    <div class="col-md-6">
+      <div class="template-header">
+        <h4 id="head3">Upload Document</h4>
+      </div>
+      <div class="row">
+
+        <div class="input-group mb-3" >
+          <div class="custom-file"  >
+          
+            <input type="text" class="form-control" [(ngModel)]="docfile" />
+            <input type="file" class="custom-file-input" id="inputGroupFile01" multiple (change)="selectdocFile($event)"
+              value="upload">
+            <label class="custom-file-label" for="inputGroupFile01" style="width: 76px; left: 320px;"
+              *ngIf="!docfile" id="btns">Browse</label>
+            <label class="custom-file-label" (click)="docfile=''" style="width: 76px; left: 320px;"
+              *ngIf="docfile" id="btns">Cancel</label>
+
+          </div>
+         
+          <div class="input-group-append" >
+            <span class="input-group-text" id="" (click)="uploaded()" style="cursor: pointer;" id="btns1">Upload</span>
+          </div>
+          <!-- <div class="input-group-append" style="float: right;" mat-dialog-actions>
+            <span class="input-group-text" id="uploadbtn" mat-button (click)="upload()">Upload</span>
+          </div> -->
+
+
+       </div>
+      </div>
+      <div class="body1">
+        <p class="body" style="height: 134px;">
+          You can upload the document containing data about the infrastructure in excel format. It is recommended to
+          have headers for each column and also set the rest of the document specifics here.
+        </p>
+        <!-- <div class="button"> -->
+        <!-- <button class="btn btn-outline-secondary">Download Template</button> -->
+        <!-- <button class="btn btn-outline-secondary" type="button">Download Template</button>
+                </div>
+     -->
+        <div class="row1">
+          <p id="head4">Uploaded Documents</p>
+
+        </div>
+        <div class="row2">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Document ID</th>
+                <th>Uploaded by</th>
+                <th>Headers</th>
+                <th>Rows</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of uploaddocfile;">
+
+                <td>{{item.document_id}}</td>
+                <td>{{item.uploaded_by}}</td>
+                <td>{{item.Headers}}</td>
+                <td>{{item.Rows}}</td>
+                <td><button id="icn">
+                    <img src="assets\eye.svg" />
+                  </button></td>
+
+                <td><button id="icn">
+                    <img src="assets\edit.svg" />
+                  </button></td>
+                <td><a routerLink="/infradata"><button id="icn">
+                    <img src="assets\chart.svg" />
+                  </button></a></td>
+                <td><button id="icn">
+                    <img src="assets\delete.svg" />
+                  </button></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+
+  </div>

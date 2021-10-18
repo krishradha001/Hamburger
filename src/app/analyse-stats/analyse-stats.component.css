@@ -1,0 +1,44 @@
+iframe {
+  width: 99%;
+  margin: 0 auto;
+  border: 0;
+  display: block;
+}
+
+.iframeDiv ul li {
+  list-style-type: none;
+  padding: 5px 0;
+}
+
+.iframeDiv ul {
+  margin: 0;
+  padding: 0;
+}
+
+.analyseCont h1 {
+  font-size: 18px;
+}
+
+.analyseCont h6 {
+  font-weight: normal !important;
+}
+.justify-content-md-end {
+  justify-content: flex-end !important;
+  margin-top: -35px;
+  padding-bottom: 15px;
+}
+.card-body {
+  height: 400px;
+  overflow-x: auto;
+}
+
+.iframeDiv h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #007bff;
+}
+.highlight {
+  color: rgb(6, 37, 48);
+  font-size: 14px;
+  font-weight: 600;
+}

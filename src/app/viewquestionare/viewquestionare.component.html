@@ -1,0 +1,157 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="container border-none">
+        <div class="container-header">
+            <h4 *ngFor="let device of viewfile">Survey Response Name of Application: {{device.general[0].name_of__application}}</h4>
+            <!-- <div class="btn-group">
+                <h4>QID</h4>
+                <select name="cars" id="cars">
+                    <option value="volvo">All</option>                    
+                  </select>
+                 -->
+            <!-- </div>
+            <div class="btn-group">
+                <h4>Department</h4>
+                <select name="cars" id="cars">
+                    <option value="volvo">All</option>                    
+                  </select>
+                
+            </div> -->
+
+        </div>
+        
+      
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-secondary btn-sm" type="button" style="background-color: whitesmoke; color: black;" (click)="viewdownloadquestion(id,i)">
+                Download
+            </button>
+            <a routerLink="/listquestionnaire/{{id}}"><button class="btn btn-outline-secondary"
+                    type="button">Back</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            General
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <div *ngFor="let device of viewfile">
+                        <li>Name of Application: {{device.general[0].name_of__application}}</li>
+                        <li>Vendor: {{device.general[1].vendor}}</li>
+                        <li>Complexity: {{device.general[2].complexity}}</li>
+                        <li>Function: {{device.general[3].function}}</li>
+
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Existing Environment
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <!-- <div *ngFor="let device of viewfile">
+                        <li>Current OS: {{device.exsiting_environment[0].current_os}}</li>
+                        <li>Current Database: {{device.exsiting_environment[1].current_database}}</li>
+                        <li>Current Middleware: {{device.exsiting_environment[2].current_middleware}}</li>
+                        <li>Virtual Or Physical: {{device.exsiting_environment[3].virtual__or_physical}}</li>
+                    </div> --> <div class="chart-container" style="position: relative; height:70vh; width:63vw">
+                        <canvas id="myChart4" ></canvas>
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Existing Infrastructure
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                            <div *ngFor="let device of viewfile">
+                        <li>Current Server Product: {{device.exsiting_infrastructure[0].current_server_-_prod}}</li>
+                        <li>Current Server System: {{device.exsiting_infrastructure[1].current_server_-_system}}</li>
+                        <li>Current Server Test: {{device.exsiting_infrastructure[2].current_server_-_test}}</li>
+                        <li>Current Server Web: {{device.exsiting_infrastructure[3].current_server_-_web}}</li>
+                    </div>
+
+
+                   
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Compatibility
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+                    <div *ngFor="let device of viewfile">
+                        <li>OS Compatibility: {{device.compatibility[0].os_compatibility}}</li>
+                        <li>Database Compatibility: {{device.compatibility[1].database_compatibility}}</li>
+                        <li>Middleware Compatibility: {{device.compatibility[2].middleware_compatibility}}</li>
+                        
+                    </div>
+
+
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <div>
+            <mat-accordion>
+
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        Dependency
+                        </mat-panel-title>
+
+                    </mat-expansion-panel-header>
+
+                    <div *ngFor="let device of viewfile">
+                        <li>Application This App Depend On: {{device.dependency[0].applications_this_app_dependant_on}}</li>
+                        <li>DataBase Dependencies: {{device.dependency[1].databse_dependencies}}</li>
+                        <li>Load Balancer: {{device.dependency[2].loadbalancer_if_any}}</li>
+                        
+                    </div>
+
+
+
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+
+
+
+
+    </div>
+
+
+</div>

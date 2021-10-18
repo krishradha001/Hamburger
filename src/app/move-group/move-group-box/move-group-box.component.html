@@ -1,0 +1,145 @@
+<div class="row">
+    <div class="movegroupbox container-fluid">
+        <div class="table-responsive migrationgroupsec">
+            <div class="subheaderdiv">
+                <h3 class="migratesubheading">Migration Groups</h3>
+                <div class="input-group">
+                    <input matInput (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="Search..">
+                </div>
+            </div>
+            <mat-table #table [dataSource]="dataSource" matSort #tableOneSort="matSort" class="mat-elevation-z81">
+
+                <!-- Id Column -->
+                <ng-container matColumnDef="Id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Id}} </mat-cell>
+                </ng-container>
+
+                <!-- (click)="cellClicked($event, this, element)"-->
+
+                <!-- Device Name Column -->
+                <ng-container matColumnDef="Device_name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Device Name </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Device_name}} </mat-cell>
+                </ng-container>
+
+                <!-- Device count Column -->
+                <ng-container matColumnDef="Device_count">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Device Count </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Device_count}} </mat-cell>
+                </ng-container>
+
+                <!-- Application count Column -->
+                <ng-container matColumnDef="Application_count">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Application Count </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Application_count}} </mat-cell>
+                </ng-container>
+
+                <!-- Service count Column -->
+                <ng-container matColumnDef="Service_count">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Service Count </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.Service_count}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="row.addedTocustMGrp ? $event.stopPropagation() : highlightRowOrgGrpClick(row);" [ngClass]="{'active': isActiveMGORowClick(row), 'disabled': row.addedTocustMGrp}"></mat-row>
+            </mat-table>
+
+        </div>
+
+        <div class="movebuttons">
+            <button type="button" class="btn btn-light" [disabled]="enableButton" (click)="addToGroup();">
+                <img class="center" src="../../../assets/arrow.svg" alt="Add">
+                <span>Add</span>
+            </button>
+            <button type="button" class="btn btn-light" [disabled]="disableButton" (click)="removeFromGroup();">
+                <img class="rotate180 center" src="../../../assets/arrow.svg" alt="Remove">
+                <span>Remove</span>
+            </button>
+
+        </div>
+
+        <div class="table-responsive custommigrationgroupsec">
+
+            <div class="subheaderdiv">
+                <h3 class="migratesubheading">{{customMoveGroupTitle}}</h3>
+                <div class="input-group">
+                    <input matInput (keyup)="applyFilterTwo($event.target.value)" class="form-control" placeholder="Search..">
+                </div>
+
+                <select name="count" id="countdropdown" [disabled]="dropdownViewMode" [(ngModel)]="countdropdownVal" class="form-control" (change)="fetchDeviceMaxCount();">
+                    <option value="">Select Count</option>
+                    <option value="Device">Device Count</option>
+                    <option value="Application">Application Count</option>
+                    <option value="Service">Service Count</option>
+                </select>
+
+                <select name="size" id="sizedropdown" [(ngModel)]="sizedropdownVal" [disabled]="dropdownViewMode" class="form-control" (change)="fetchDeviceMaxCount();">
+                    <option value="">Select Group</option>
+                    <option value="High">High Size Group</option>
+                    <option value="Medium">Medium Size Group</option>
+                    <option value="Low">Low Size Group</option>
+                </select>
+
+            </div>
+            <div class="subBodyDiv">
+
+                <mat-table #table [dataSource]="dataSource2" matSort #tableTwoSort="matSort" class="mat-elevation-z81">
+
+                    <!-- Id Column -->
+                    <ng-container matColumnDef="Id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.Id}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Device Name Column -->
+                    <ng-container matColumnDef="Device_name">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Device Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.Device_name}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Device count Column -->
+                    <ng-container matColumnDef="Device_count">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Device Count </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.Device_count}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Application count Column -->
+                    <ng-container matColumnDef="Application_count">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Application Count </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.Application_count}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Service count Column -->
+                    <ng-container matColumnDef="Service_count">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Service Count </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.Service_count}} </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns" #matHeadCMG></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="highlightRowCustGrpClick(row);" [ngClass]="{'active': isActiveMGCRowClick(row)}"></mat-row>
+                </mat-table>
+                <div class="devicecount">
+                    <div class="counthead" *ngIf="countdropdownVal">{{countdropdownVal + ' Count'}} </div>
+                    <div class="countbody">{{deviceCountOfAdded}}</div>
+                    <!-- <div class="countfooter"></div> -->
+                </div>
+
+            </div>
+
+            <div class="subfooterDiv">
+                <div class="maxCount">
+
+                    <label for="Remaining Count">Remaining Count : </label>
+                    <label for="Maximum Device" *ngIf="sizedropdownVal">{{sizedropdownVal + ' Device' }}  : {{deviceMaxCount}}</label>
+                </div>
+                <div class="remainingCount">
+                    <label for="Remaining Count Value">{{remainingCount}}</label>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <button type="button" class="btn btn-light saveGrpBtn" [disabled]="enableDisableSaveMGBtn" (click)="saveCustomGrp();">{{dynTxtForBtn}}</button>
+</div>

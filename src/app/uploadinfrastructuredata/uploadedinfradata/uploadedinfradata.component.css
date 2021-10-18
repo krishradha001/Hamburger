@@ -1,0 +1,57 @@
+#heading{
+    font: 18px;
+    padding-left: 7px;
+}
+.header 
+{
+    padding-top: 40px;
+    border-bottom: 2px solid #cccccc;
+}
+#btnupl
+{
+    
+        margin: 0 auto;
+        position: relative;
+        left:502px;
+}
+
+.header h3{
+   display: inline;
+    
+}
+.header a{
+    float:right;
+    margin-top: -14px;
+}
+
+ /* .table{
+    max-height: 300px;
+    overflow: auto;
+ } */
+
+.container-fluid{
+    display: inline-block;
+}
+
+.header2
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+ .table {
+    display: block;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-height: 400px;
+    overflow: auto;
+    border: 1px solid;
+    margin-top: 10px;
+    
+  }
+  
+  

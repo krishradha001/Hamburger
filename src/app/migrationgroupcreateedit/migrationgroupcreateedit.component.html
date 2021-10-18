@@ -1,0 +1,344 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+    <div class="cost container">
+        <div class="inputSec">
+            <div class="inputCont" id="cost">
+                <label id="est">Cost Estimation:</label>
+                <select class="form-control" id="Mig1">
+                    <option value="all" selected="selected">Migration Group 102</option>
+
+                </select>
+                <label>Cloud:</label>
+                <select class="form-control" id="Mig">
+                    <option value="all" selected="selected"><img src="assets/Google.png" />Google Cloud</option>
+
+                </select>
+                <label>Cost:</label>
+                <select class="form-control" id="Mig2">
+                    <option value="all" selected="selected">$500-$1500</option>
+
+                </select>
+
+
+            </div>
+
+        </div>
+        <ng-container *ngFor=" let devices of currentsizedata;">
+            <div class="container" style="border: 1px solid;" *ngFor="let device of gcptarget;">
+                <div class="cost1container">
+                    <div class="row">
+
+                        <div class="col-md-2" id="mt1">
+                            <p>{{devices.Migration_Group}}</p>
+                            <p id="mt">Current Size</p>
+                            <p>Target Size</p>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="p-2 bd-highlight"><img src="assets/images/VM.svg"
+                                    style="height: 20px;" />VM/PHYS
+                                <span class="MEM">{{devices.vm}}</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+
+                            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly">
+                                <div class="p-2 bd-highlight"><img src="assets/images/memory.svg" />Memory
+                                    <span class="MEM">{{devices.memory}}</span>
+                                    <div class="MEM1">{{device.memory}}</div>
+                                </div>
+
+                                <div class="p-2 bd-highlight"><img src="assets/images/compute.svg" />Compute
+                                    <span class="MEM">{{devices.compute}}</span>
+                                    <div class="MEM1">{{device.compute}}</div>
+                                </div>
+                                <div class="p-2 bd-highlight"><img src="assets/images/OS.svg" />OS
+                                    <span class="MEM">{{devices.os}}</span>
+                                    <div class="MEM1">{{device.os}}</div>
+                                </div>
+                                <div class="p-2 bd-highlight"><img src="assets/images/Storage.svg" />Storage
+                                    <span class="MEM">{{devices.Storage}}</span>
+                                    <div class="MEM1">{{device.storage}}</div>
+                                </div>
+                                <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />DB Paas
+                                    <span class="MEM">{{devices.DB_PaaS}}</span>
+                                    <div class="MEM1">{{device.db_pass}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="lastbox">
+                                <p>Total Size</p>
+                                <p>Cost Estimate</p>
+                                <p style="font: normal normal bold 22px/27px Helvetica Neue;">{{device.total_cost}}</p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row" *ngIf="display">
+                        <div class="col-md-12">
+                            <img src="assets/Google.png">
+                            <h4>Catalogue</h4>
+                        </div>
+                        <div class="col-md-6" style="border: 1px solid;overflow-y: scroll;height: 161px;">
+
+                            
+
+
+                                <div class="table table-borderless">
+                                   
+
+                                    <tr class="tr1" *ngFor="let catalogue of gcpcataloguedata;let first=first; " >
+
+                                        <th *ngIf="first">Instance ID</th>
+                                        <th *ngIf="first"><img src="assets/images/compute.svg" /></th>
+                                        <th *ngIf="first"><img src="assets/images/memory.svg" /></th>
+                                        <th *ngIf="first"><img src="assets/images/OS.svg" /></th>
+                                        <th *ngIf="first">Duration</th>
+                                        <th *ngIf="first">Cost</th>
+
+                                    </tr>
+                                    <div class="drag" cdkDropList #todoList="cdkDropList" [cdkDropListData]="gcpcataloguedata"
+                                   [cdkDropListConnectedTo]="[doneList]" class="example-list" 
+                                 (cdkDropListDropped)="drop($event)">
+
+                                    <tr  *ngFor="let catalogue of gcpcataloguedata;let first=first; "  cdkDrag>
+                                        <td>{{catalogue.Instance_name}}</td>
+                                        <td>{{catalogue.compute}}</td>
+                                        <td>{{catalogue.memory}}</td>
+                                        <td>{{catalogue.os}}</td>
+                                        <td>{{catalogue.duration}} </td>
+
+                                        <td>{{catalogue.cost}}</td>
+
+                                    </tr>
+
+
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+                        <div class="col-md-3" style="border: 1px solid; overflow-y: scroll;height: 161px;">
+
+
+                            <div class="table table-borderless">
+
+                                <tr *ngFor="let storage of gcpcataloguedatastorage;let first=first; ">
+
+
+                                    <th *ngIf="first"><img src="assets/images/Storage.svg" /></th>
+
+                                    <!-- <th *ngIf="first">Duration</th>
+                                        <th *ngIf="first">Cost</th> -->
+
+                                </tr>
+                                <div cdkDropList #todoList1="cdkDropList" [cdkDropListData]="gcpcataloguedatastorage"
+                                    [cdkDropListConnectedTo]="[doneList1]" class="example-list"
+                                    (cdkDropListDropped)="drop($event)">
+                                    <tr *ngFor="let storage of gcpcataloguedatastorage" cdkDrag>
+
+                                        <td>{{storage.Storage_type}}</td>
+                                        <td>{{storage.duration}}</td>
+                                        <td>{{storage.cost}}</td>
+
+                                    </tr>
+                                    <!-- the name in the top storage catalogue container and down container doesnot match so cannot be graagged need to discuss with shefali -->
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="border: 1px solid;overflow-y: scroll;height: 161px;">
+                            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly"
+                                *ngFor="let database of gcpcataloguedatabase;">
+                                <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                                    <span class="MEM">{{database.databse_type}}</span>
+                                </div>
+                                <div class="p-2 bd-highlight" class="MEM2">
+
+                                    <span class="MEM">{{database.duration}}</span>
+
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <span class="MEM3">{{database.cost}}</span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn" (click)="catalogue()"><img src="assets/toggle.svg"></button>
+
+                    <div class="row">
+
+                        <div class="col-md-6" style="border: 1px solid;">
+
+                            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="gcpinstancedata"
+                                [cdkDropListConnectedTo]="[todoList]" class="example-list"
+                                (cdkDropListDropped)="drop($event)">
+                                <div class="table table-borderless"
+                                    *ngFor="let device of gcpinstancedata;let first=first;" cdkDrag>
+
+                                    <tr *ngFor="let devices of gcpinstancesdata;">
+
+                                        <th *ngIf="first">Instance ID</th>
+                                        <th *ngIf="first"><img src="assets/images/compute.svg" /></th>
+                                        <th *ngIf="first"><img src="assets/images/memory.svg" /></th>
+                                        <th *ngIf="first"><img src="assets/images/OS.svg" /></th>
+                                        <th *ngIf="first">Count</th>
+                                        <th *ngIf="first">{{devices.total_cost}}</th>
+
+                                    </tr>
+
+                                    <tr>
+
+                                        <td>{{device.Instance_name}}</td>
+                                        <td>{{device.compute}}</td>
+                                        <td>{{device.memory}}</td>
+                                        <td>{{device.os}}</td>
+                                        <td>
+                                            <div class="col-md-1" style="border: 1px solid; width: fit-content;">
+                                                <span>{{device.count}}</span>
+                                            </div>
+                                        </td>
+                                        <td>{{device.cost}}</td>
+
+                                    </tr>
+
+
+
+                                </div>
+
+
+                                <!-- </div> -->
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="border: 1px solid;">
+
+
+
+                            <div class="table table-borderless">
+
+
+                                <tr *ngFor="let devices of gcpinstancesdata">
+
+
+                                    <th><img src="assets/images/Storage.svg" /></th>
+                                    <th>Duration</th>
+
+                                    <th>{{devices.Storage_cost}}</th>
+
+
+                                </tr>
+                                <div cdkDropList #doneList1="cdkDropList" [cdkDropListData]="gcpinstancestorage"
+                                    [cdkDropListConnectedTo]="[todoList1]" class="example-list"
+                                    (cdkDropListDropped)="drop($event)">
+
+                                    <tr *ngFor="let storages of gcpinstancestorage;" cdkDrag>
+
+
+                                        <td>{{storages.Storage_size}}</td>
+
+                                        <td>
+                                            <div class="col-md-1" style="border: 1px solid; width: fit-content;">
+                                                <span>{{storages.count}}</span>
+                                            </div>
+                                        </td>
+                                        <td>{{storages.Storage_cost}}</td>
+
+                                    </tr>
+
+
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-3" style="border: 1px solid;">
+                            <div class="d-flex bd-highlight mb-3 justify-content-md-evenly"
+                                *ngFor="let db of gcpinstancedb;">
+                                <div class="p-2 bd-highlight"><img src="assets/images/DB.svg" />
+                                    <span class="MEM">{{db.db_name}}</span>
+                                </div>
+                                <div class="p-2 bd-highlight" class="MEM2">
+                                    <div class="col-md-1" style="border: 1px solid;">
+                                        <span class="MEM">{{db.count}}</span>
+                                    </div>
+                                </div>
+                                <div class="p-2 bd-highlight" *ngFor="let devices of gcpinstancesdata">
+                                    <p>{{devices.db_cost}}</p>
+                                    <span class="MEM3">{{db.db_cost}}</span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+
+
+                        <div class="col-md-12" class="save">
+                            <div class="d-grid gap-2 d-md-flex justify-content-end">
+
+                                <!-- <a routerLink="/migrationgrouptarget"><button class="btn btn-outline-secondary"
+                                            type="button">Cancel</button></a> -->
+                                <a (click)="back()"><button class="btn btn-outline-secondary"
+                                        type="button">Cancel</button></a>
+                                <button class="btn btn-outline-secondary" type="button">Save Target Size</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>

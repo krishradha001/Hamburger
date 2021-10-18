@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+
+<head>
+    <title>cytoscape-euler.js demo galApp</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.0/bluebird.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script> -->
+
+    <script src="cyto_lib/bluebird.js"></script>
+    <script src="cyto_lib/fetch.min.js"></script>
+    <script src="cyto_lib/cytoscape.min.js"></script>
+
+    <!-- for testing with local version of cytoscape.js -->
+    <!--<script src="../cytoscape.js/build/cytoscape.js"></script>-->
+
+    <script src="cyto_lib/cytoscape-euler.js"></script>
+
+    <style>
+        body {
+            font-family: helvetica neue, helvetica, liberation sans, arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+        }
+        /* #cy {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 999;
+        } */
+        
+        h1 {
+            opacity: 0.5;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        
+        .slidecontainer {
+            width: 100%;
+            bottom: 45%;
+            display: flex;
+            justify-content: flex-end;
+            position: fixed;
+            clear: both;
+            left: 1%;
+        }
+        
+        .innerslidercontainer {
+            width: 230px;
+            -webkit-transform: rotate( -90deg);
+            -moz-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            transform: rotate( -90deg);
+            position: relative;
+            bottom: 15px;
+            right: -6%;
+            background-color: #ffffff;
+            height: 16px;
+            display: flex;
+        }
+        
+        .innerslidercontainer img {
+            -webkit-transform: rotate( 90deg);
+            -moz-transform: rotate(90deg);
+            -o-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate( 90deg);
+            margin: 0;
+        }
+        
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        
+        .slider:hover {
+            opacity: 1;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 20px;
+            border-radius: 5px;
+            background: #aaa;
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var subNodesObj = {};
+            var edges = {};
+            var arrayNodes = [];
+
+            var elemsNodes = {};
+            var network1Data;
+            var network2Data;
+            var deviceNames = [];
+            var itemName = '';
+
+            var softwareviewData = [];
+            // var softwareviewData;
+
+            var url_string = window.location.href;
+            // var url_string = 'http://localhost:4200/assets/cytoscape/apsIndex.html?selectedType=app_in_device/grafana_server&deviceName=24&appsUrl=http://localhost:5000';
+            // var url_string = 'http://localhost:4200/assets/cytoscape/apsIndex.html?selectedType=app_in_device/CMDB&selectedAp=null&appsUrl=http://localhost:5000';
+            // var url_string = 'http://localhost:4200/assets/cytoscape/apsIndex.html?selectedType=all_applications&selectedAp=5&appsUrl=http://localhost:5000';
+            var url = new URL(url_string);
+            var selectedType = url.searchParams.get("selectedType");
+            var selectedApCount = url.searchParams.get("selectedAp");
+            var appsUrl = url.searchParams.get("appsUrl");
+            var deviceId = +url.searchParams.get("deviceName");
+            var deviceName;
+            var selectedAp;
+
+            // using XMLHttpRequest to get list of devices with subnet
+            var xhr = new XMLHttpRequest();
+            // xhr.open("GET", appsUrl + '/' + selectedType, true);
+            xhr.open("GET", appsUrl + '/softwareview', true);
+
+            xhr.onload = function() {
+
+                var elems = {};
+                var edgeNodes = {};
+                var nodeData = {};
+                var edgeData = [];
+                var dataNodes = [];
+                var dataEdges = [];
+                var softwaresList = [];
+
+                // console.log(xhr.responseText);
+
+                softwareviewData = JSON.parse(xhr.responseText);
+
+                if (softwareviewData.length > 0) {
+                    console.log(selectedType);
+                    softwareviewData.forEach((deviceItem, index) => {
+                        let softwareDetails = deviceItem.software_details;
+                        if (selectedType == 'all_applications') {
+                            softwareDetails.forEach(softItem => {
+                                softwaresList.push(softItem.software);
+                            });
+
+                            var uniqueNames = [];
+                            $.each(softwaresList, function(i, el) {
+                                if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+                            });
+
+                            if (uniqueNames.length > 0) {
+                                uniqueNames.forEach(softwareItem => {
+                                    if (softwareItem && softwareItem.length > 10) {
+                                        softName = softwareItem.substring(0, 10);
+                                    } else {
+                                        softName = softwareItem;
+                                    }
+                                    var subNodeData = {};
+                                    if (softName) {
+                                        subNodeData["data"] = {
+                                            id: softName
+                                        }
+                                        dataNodes.push(subNodeData);
+                                    }
+                                });
+                            }
+
+                        } else {
+
+                            if (deviceItem.device_id === deviceId) {
+                                nodeData = {};
+                                deviceName = deviceItem.device_name;
+                                nodeData["data"] = {
+                                    id: deviceItem.device_name
+                                }
+                                dataNodes.push(nodeData);
+                                nodeData["position"] = {
+                                    "x": 4491.9853515625,
+                                    "y": 4520.1904296875
+                                }
+                                dataNodes.push(nodeData);
+                                softwareDetails.forEach((softItem, index) => {
+
+                                    if (index < 10) {
+                                        let custEdgeNodes = {};
+                                        var subNodeData = {};
+                                        let custEdgeNodes1 = {};
+                                        var subNodeData1 = {};
+                                        custEdgeNodes["data"] = {
+                                            source: deviceItem.device_name,
+                                            target: softItem.software
+                                        }
+                                        subNodeData["data"] = {
+                                            id: softItem.software
+                                        }
+                                        dataNodes.push(subNodeData);
+                                        edgeData.push(custEdgeNodes);
+                                    }
+                                });
+                            }
+                        }
+                    });
+
+                    elemsNodes["nodes"] = dataNodes;
+                    elemsNodes["edges"] = edgeData;
+
+                    elems = elemsNodes;
+                    var nodes = elems.nodes;
+                } else {
+                    elemsNodes["nodes"] = '';
+                    elemsNodes["edges"] = '';
+                    elems = '';
+                    var nodes = '';
+                }
+
+                var maxZoomIndex = parseFloat(3.0);
+                var minZoomIndex = parseFloat(0.5);
+                var cy = cytoscape({
+                    container: document.getElementById('cy'),
+                    layout: {
+                        // name: 'euler',
+                        name: 'cose',
+                        circle: true,
+                        spacingFactor: 100.8,
+                        avoidOverlap: true,
+                        randomize: false,
+                        minNodeSpacing: 30,
+                        nodeOverlap: 40,
+                        minZoom: 0.1,
+                        zoom: 1.5,
+                        maxZoom: maxZoomIndex,
+                        zoomingEnabled: false,
+                        fit: true,
+                    },
+                    style: [{
+                        selector: 'node',
+                        style: {
+                            'content': 'data(name)'
+                        }
+                    }, {
+                        "selector": "node",
+                        "style": {
+                            "width": "50px",
+                            "height": "50px",
+                            "content": "data(id)",
+                            "font-size": "4px",
+                            "text-valign": "center",
+                            "text-halign": "center",
+                            "background-color": "#fff",
+                            "color": "#000",
+                            "overlay-padding": "6px",
+                            "z-index": "10",
+                            "border-width": "1px",
+                            "border-color": "#000",
+                            "border-opacity": "1",
+                            '-webkit-font-smoothing': 'antialiased',
+                            '-moz-osx-font-smoothing': 'grayscale'
+                        }
+                    }, {
+                        "selector": "node.subnet",
+                        "style": {
+                            "width": "100px",
+                            "height": "100px",
+                        }
+                    }, {
+                        "selector": "node.deviceName",
+                        "style": {
+                            "width": "75px",
+                            "height": "75px",
+                        }
+                    }, {
+                        "selector": "edge",
+                        "style": {
+                            'curve-style': 'bezier',
+                            "opacity": "1",
+                            "line-color": "#d7e0e3",
+                            "width": "1px",
+                            'line-style': 'dotted',
+                            'target-arrow-color': '#d7e0e3',
+                            'target-arrow-shape': 'triangle'
+                        }
+                    }, {
+                        selector: '.subnet',
+                        style: {
+                            'border-color': '#7a7480',
+                            "line-color": "#7a7480",
+                            'color': '#000'
+                        }
+                    }, {
+                        selector: '.subnet:selected',
+                        style: {
+                            'border-color': '#7a7480',
+                            "line-color": "#7a7480",
+                            'background-color': '#7a7480',
+                            'color': '#fff'
+                        }
+                    }, {
+                        selector: '.deviceName',
+                        style: {
+                            'border-color': '#0097ac',
+                            "line-color": "#0097ac",
+                            'color': '#000'
+                        }
+                    }, {
+                        selector: '.deviceName:selected',
+                        style: {
+                            'border-color': '#0097ac',
+                            "line-color": "#0097ac",
+                            'background-color': '#0097ac',
+                            'color': '#fff'
+                        }
+                    }, {
+                        selector: '.software',
+                        style: {
+                            'border-color': '#c2bcbe',
+                            "line-color": "#c2bcbe",
+                            'color': '#000'
+                        }
+                    }, {
+                        selector: '.software:selected',
+                        style: {
+                            'border-color': '#c2bcbe',
+                            "line-color": "#c2bcbe",
+                            'background-color': '#c2bcbe',
+                            'color': '#fff'
+                        }
+                    }, {
+                        selector: 'edge.semitransp', // on hover class for edges
+                        style: {
+                            'opacity': '1'
+                        }
+                    }],
+                    elements: elems
+                });
+
+
+                console.log(nodes.length);
+
+                //recursively removing all children of the Start node (all nodes but the Start node will be removed)
+                if (nodes && nodes.length > 0) {
+                    nodes.forEach((item, index) => {
+                        if (deviceName == item.data.id) {
+                            cy.$("#" + item.data.id).addClass('deviceName');
+                            cy.$("#" + item.data.id).successors().targets().addClass('software');
+                        } else {
+                            cy.$("#" + item.data.id).addClass('software');
+                        }
+
+                        if (nodes.length - 1 == index) {
+                            setTimeout(function() {
+                                document.getElementById("cy").style.position = "inherit";
+                                console.log(item);
+                                cy.animate({
+                                    zoom: 1.5
+                                }, {
+                                    duration: 1000
+                                });
+
+                                setTimeout(function() {
+                                    cy.animate({
+                                        center: true
+                                    }, {
+                                        duration: 1000
+                                    });
+                                }, 2000);
+                                document.querySelector("#cy div").style.height = "100vh";
+                            }, 4000);
+                        }
+                    });
+                }
+
+
+
+                var slider = document.getElementById("zoomVal");
+
+                slider.onchange = function() {
+                    let zoomVal = +this.value / 100;
+                    cy.zoom(zoomVal);
+                    console.log(zoomVal);
+                }
+
+                document.getElementById("cy").addEventListener("wheel", function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    cy.userZoomingEnabled(false);
+
+                    let zoomSliderVal = parseFloat(document.getElementById("zoomVal").value / 100);
+                    let zoomIndex = zoomSliderVal;
+
+                    if (Math.sign(e.deltaY) == 1) {
+
+                        if ((zoomIndex >= minZoomIndex) && (zoomIndex <= maxZoomIndex)) {
+                            document.getElementById("zoomVal").value = (zoomIndex - parseFloat(0.1)) * parseFloat(100);
+                            cy.zoom((zoomIndex - parseFloat(0.1)));
+                        }
+                    }
+
+                    if (Math.sign(e.deltaY) == -1) {
+                        if ((zoomIndex >= minZoomIndex) && (zoomIndex <= maxZoomIndex)) {
+                            document.getElementById("zoomVal").value = (zoomIndex + parseFloat(0.1)) * parseFloat(100);
+                            cy.zoom((zoomIndex + parseFloat(0.1)));
+                        }
+                    }
+
+                    return false;
+                });
+
+                document.getElementById("zoomPlus").addEventListener("click", function(e) {
+
+                    let zoomSliderVal = parseFloat(document.getElementById("zoomVal").value / 100);
+                    let zoomIndex = zoomSliderVal;
+                    document.getElementById("zoomVal").value = (zoomIndex + parseFloat(0.1)) * parseFloat(100);
+                    cy.zoom((zoomIndex + parseFloat(0.1)));
+                    console.log(document.getElementById("zoomVal").value);
+
+                });
+
+
+            };
+            xhr.send();
+
+
+
+        });
+    </script>
+</head>
+
+<body style="height: 100%;">
+
+    <div id="cy" style="height: 100%;"></div>
+    <div class="slidecontainer">
+        <div class="innerslidercontainer">
+            <img id="zoomPlus" src="zoom-.svg" />
+            <input type="range" min="50" max="300" value="150" class="slider" id="zoomVal">
+            <img src="zoom+.svg" />
+        </div>
+    </div>
+
+</body>
+
+</html>

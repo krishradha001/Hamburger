@@ -1,0 +1,36 @@
+.container-fluid{
+    border: 1px solid;
+    background-color: #ECECE1;   
+
+}
+.col-md-12
+{
+    display: flex;
+    
+}
+#icon
+{
+    display: flex;
+    justify-content: space-between;
+     align-items: baseline;
+}
+#label
+{
+    display: grid;
+}
+#h3 {
+    padding-top: 12px;
+font: normal normal normal 22px/26px Arial;
+letter-spacing: 0px;
+color: #006E74;
+opacity: 1;
+}
+#icon label
+{
+    font: normal normal normal 13px Arial;
+letter-spacing: 0px;
+color: #006E74;
+opacity: 1;
+line-height: normal;
+display: grid;
+}

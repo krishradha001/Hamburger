@@ -1,0 +1,106 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="containerHeader" style="margin: 19px -81px -28px;">
+                        <h4><img src="assets/images/discover.svg"/>Survey Response</h4>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: -10px;
+        margin-left: -34px;" >
+            <!-- <button class="btn btn-secondary btn-sm" type="button" style="background-color: whitesmoke; color: black;">
+                Sort by department
+            </button> -->
+            
+            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" style="background-color: whitesmoke; color: black;"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <span >Sort by Name</span>
+            </button>
+         
+              <button class="btn addDoc"  (click)="openDialog()" >
+             Upload
+              </button>
+
+           
+              <!-- <label for="inputGroupFile02"  id="inputGroupFile02" class="custom-file-input" type="button" multiple
+              (change)="selectFiles($event.target.files)">Upload Questionnare</label> -->
+            
+                <button class="btn btn-secondary btn-sm" type="button" style="background-color: whitesmoke; color: black;" (click)="downloadquestion(id)">
+                    Download
+                </button>
+                <a routerLink="/questionare"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+               
+        
+        </div> 
+    </div>
+    <!-- <div class="row">
+        <div class="containerHeader">
+            <h3>Survey Response</h3>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div> -->
+    <div class="container" style="border: 1px solid; height: 700px;">
+        
+      
+   
+        
+       
+       <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            
+         
+          
+            <th scope="col">Sl.No</th>
+            <th scope="col">Application</th>
+            <th scope="col">Vendor</th>
+            <th scope="col">VP Owner</th>
+            <th scope="col">IT Owner</th>
+            <th scope="col">SME</th>
+            <th scope="col">Complexity</th>
+ 
+          </tr>
+        </thead>
+        <tbody>
+                
+       
+          <tr *ngFor="let device of uploadedquestion ">
+        
+           
+            <td >{{ device.id}} </td>
+            <td>{{ device.name_of__application}} </td>
+            <td>{{ device.vendor}} </td>
+  
+            <td>{{ device.vp_owner}} </td>
+            <td>{{ device.it_owner}} </td>
+            <td>{{ device.sme}} </td>
+            <td>{{ device.complexity}} </td>
+   
+           
+          
+             
+             <!-- <button *ngIf="device.method.length"> <img src="assets\upload.svg" /> </button> -->
+
+             
+                 <button (click)="viewquestionnaire(id,device.id)">
+                <img src="assets\eye.svg" /> 
+                </button>
+             
+               <button>
+                  <img src="assets\edit.svg"  /> 
+                  </button>
+                    <button (click)="deletelistquestion(id,device.id)">
+                      <img src="assets\delete.svg" /> 
+                    </button>
+          </tr>
+        
+         
+         
+        </tbody>
+      </table>
+    </div>
+
+
+</div>

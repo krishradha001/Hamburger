@@ -1,0 +1,187 @@
+.container-fluid {
+    background: #f2f6fa;
+    border-left: 4px solid;
+    border-color: #025b95;
+}
+
+.planContainer img.hamburgerIcon {
+    width: 120px;
+    position: relative;
+    right: 172px;
+    top: 10px;
+    height: 83px;
+}
+
+.containerHeader {
+    height: 50px;
+    display: block;
+    justify-content: start;
+    align-items: center;
+}
+
+.clear.sec-one {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.clear.sec-one h5 {
+    font-size: 18px;
+    padding: 10px;
+    margin: 0;
+    color: #1c1e25;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.sec-one {
+    margin-bottom: 20px;
+}
+
+.documents-list {
+    height: 220px;
+    overflow-y: auto;
+}
+
+.btn.addDoc {
+    border: 0;
+    width: 25px;
+    height: 25px;
+  
+}
+
+.btn.addDoc img {
+    vertical-align: -2px;
+    margin-top: -5px;
+    background: none;
+}
+
+.documents-list ul {
+    margin-left: 25px;
+    margin-top: 10px;
+}
+
+.documents-list ul li {
+    list-style-type: decimal;
+    color: #1c1e25;
+    font-size: 14px;
+}
+
+.sec-one-child {
+    height: 300px;
+    border: #b3b8be 1px solid;
+}
+
+.sec-one-child.migration {
+    flex: 3;
+    margin-right: 20px;
+}
+
+.strategy-doc.sec-one-child {
+    flex: 1;
+}
+
+h4 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    color: #1c1e25;
+    right: 189px;
+    position: relative;
+    top: 10px;
+    display: inline-block;
+}
+
+.containerHeader button a {
+    text-decoration: none;
+    color: #1c1e25;
+}
+
+.containerHeader button a:hover,
+.containerHeader button {
+    background-color: transparent;
+    color: #1c1e25;
+}
+
+.containerHeader button {
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+}
+
+.d-md-flex {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    font-family: verdana;
+    font-size: 17px;
+}
+
+input[type="file"] {
+    display: block;
+    width: 65px;
+    position: absolute;
+}
+
+.documents-list li {
+    display: flex;
+    justify-content: space-between;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    margin: 1px;
+}
+
+.documents-list li {
+    list-style-type: disc;
+    border-bottom: #ccc 1px solid;
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.documents-list button {
+    border: none;
+}
+
+.progress {
+    visibility: hidden;
+}
+
+.mat-dialog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    border: 1px solid;
+    position: relative;
+}
+
+.sec-one hr {
+    padding: 0;
+    margin: 0;
+}
+
+.strategy-doc h5 {
+    display: inline-block;
+    color: #1c1e25;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mat-focus-indicator.btn.addDoc.mat-button-base {
+    background-color: transparent;
+    margin-left: 5px;
+    margin-top: 2px;
+    
+}
+
+.mat-mini-fab .mat-button-wrapper {
+    padding: 0;
+}
+.button{
+    border: none;
+    padding: 4px 13px;
+}

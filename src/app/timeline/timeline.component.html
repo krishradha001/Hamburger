@@ -1,0 +1,134 @@
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- fluid container to display the records cound in card items -->
+<div class="container-fluid">
+    <app-counts-list></app-counts-list>
+
+    <!-- display the records count in card items as progress bar for discovery section -->
+    <div class="row migrationGroup-body-sec">
+        <div class="d-grid gap-2 sub-title">
+            <div class="title-dateSelector">
+                <h2><img src="assets/images/analyse.svg" />Migration Timeline</h2>
+                <input type="date" [(ngModel)]="fromDate">
+
+                <input type="date" [(ngModel)]="toDate" [min]="getMinDate()">
+
+                <button (click)="getDates();">Go</button>
+            </div>
+            <a routerLink="/migrate"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="container-fluid">
+
+    <div class="timelineTblDiv">
+        <div class="overflowHidn">
+
+
+            <table class="table table-bordered timeLineTbl" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th rowspan="2" class="topHeader staticHead">
+                            <div class="thCell waveHead">Wave ID</div>
+                        </th>
+                        <ng-container *ngFor="let d of dateDiff; let i=index;">
+                            <ng-container *ngIf="checkCol(i, d, dateDiff.length)">
+                                <th [attr.colspan]="setColSpan(i, d, dateDiff.length)" [ngClass]="d.getDay() == 0 ? 'my_class1 topHeader' : 'weekStart topHeader'">
+                                    <div [innerHtml]="getHtml(i, dateDiff.length)" class="thCell"></div>
+                                </th>
+                            </ng-container>
+                        </ng-container>
+                    </tr>
+                    <tr>
+                        <th class="topHeader" *ngFor="let d of dateDiff; let j=index;" [ngClass]="d.getDay() == 0 ? 'weekStart topHeader tblcell' : ' topHeader tblcell'">
+                            <div class="thCell">{{ d.getDate() }}</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="taskList">
+                    <ng-container *ngFor="let mw of taskList; let j=index;">
+                        <ng-container *ngIf="mw.group_data?.length > 0">
+                            <tr class="accordion-toggle collapsed">
+                                <td class="expand-button">
+                                    <div class="thCell" [attr.href]="mw.wave_id" (click)=toggleSec($event);>{{ mw.wave_id }}</div>
+                                </td>
+                                <td *ngFor="let d of dateDiff; let j=index;" [ngClass]="d.getDay() == 0 ? 'weekStart tblcell':'tblcell'">
+
+                                </td>
+                            </tr>
+
+                            <tr [attr.id]="mw.wave_id" [ngClass]="'hide-table-padding collapse in p-3 ' + mw.wave_id" *ngFor="let submg of mw.group_data; let t = index;">
+                                <td>
+                                    <div class="thCell">{{ submg.mgroup_id }} </div>
+                                </td>
+                                <td *ngFor="let d of dateDiff; let j=index;" [ngClass]="d.getDay() == 0 ? 'weekStart tblcell':'tblcell'">
+                                    <ng-container *ngIf="taskList">
+                                        <ng-container *ngFor="let task of taskList;">
+                                            <ng-container *ngIf="(taskList[t].wave_id == task.wave_id)">
+                                                <ng-container *ngIf="(submg.group_start_date === null) && (submg.group_end_date === null) && (j == 2)">
+                                                    <div [style.width.px]="getNullStyle(submg)">
+                                                        <div class="progress">
+                                                            {{nullDatesMsg}}
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-container *ngIf="getDate(submg, d)">
+
+                                                    <div [style.width.px]="getStyle(submg, d)">
+                                                        <div class="progress" *ngIf="submg.status == 'Running'">
+                                                            <div [class]="submg.mgroup_id +' progress-bar'" role="progressbar" [style.width.%]="getProgressRunning(submg, d)" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="progresStatusVal" [innerHTML]="progressDispVal" [attr.title]="progressDispVal"></span></div>
+                                                        </div>
+
+                                                        <div class="progress" *ngIf="submg.status == 'Error'">
+                                                            <ng-container *ngIf="checkBeforeError(submg, d)">
+                                                                <div [class]="submg.mgroup_id +' progress-bar'" role="progressbar" [style.width.px]="checkProgressBeforeError(submg, d)" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </ng-container>
+                                                            <ng-container *ngIf="checkError(submg, d)">
+                                                                <div [class]="submg.mgroup_id +' progress-bar error'" role="progressbar" [style.width.px]="getProgressError(submg, d)" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                            </ng-container>
+
+                                                        </div>
+
+                                                    </div>
+                                                </ng-container>
+                                            </ng-container>
+                                        </ng-container>
+
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </ng-container>
+
+                        <ng-container *ngIf="mw.group_data?.length == 0">
+                            <tr>
+                                <td class="expand-button">
+                                    <div class="thCell">{{ mw.wave_id }}</div>
+                                </td>
+                                <td *ngFor="let d of dateDiff; let j=index;" [ngClass]="d.getDay() == 0 ? 'weekStart' : ''">
+                                    <div *ngIf="j==1" style="width: 200%;">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width:70%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+
+
+                    </ng-container>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

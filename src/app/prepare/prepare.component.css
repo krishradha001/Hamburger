@@ -1,0 +1,67 @@
+/* h4
+{
+display: inline;
+margin-right: 48px;
+
+} */
+.dropdown {
+  width: 300px !important;
+}
+.container-header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+h4 {
+  font: 400 15px/24px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  margin: 6px 13px 9px;
+}
+.btn-group {
+  margin-top: 6px;
+}
+.justify-content-md-end {
+  justify-content: flex-end !important;
+  margin-top: -35px;
+  padding-bottom: 15px;
+}
+.container-fluid {
+  border-left: 4px solid;
+  border-color: #025b95;
+}
+.btn-secondarybtn-sm {
+  color: black;
+  border-color: #6c757d;
+}
+.container {
+  border: 1px solid;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.mat-accordion {
+  border-radius: 7px;
+}
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 35px;
+  margin-left: 19px;
+  padding-top: 8px;
+}
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.border-none {
+  border: 0;
+  padding: 0;
+}
+
+.btn-group select {
+  width: 200px;
+  padding-left: 15px;
+}

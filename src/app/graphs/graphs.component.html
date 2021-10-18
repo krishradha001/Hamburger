@@ -1,0 +1,240 @@
+
+<app-header></app-header>
+<!-- get header content -->
+
+<!-- Begin Page Content -->
+<div class="container-fluid" style="background: #F4F7FC;">
+    <app-counts-list ></app-counts-list>
+
+    <!-- Page Heading -->
+    
+    <div class="header">
+        <img src="assets/images/discover.svg" />
+        <h3 id="heading">Infrastructure Data</h3>
+        <a routerLink="/infradata/{{id}}"><button class="btn btn-outline-secondary" type="button">Back</button></a>
+      </div>
+      <div class="header2">
+          <p>Categorized Infrastructure Data</p>
+          <select id="dropdwn" [(ngModel)]="selecteddevice"  (change)=" getcatFiles();"> 
+              <!-- <select [(ngModel)]="selecteddevice" (change)="configure_data();"> -->
+              <option *ngFor="let item of droplist" [value]= "item.name">{{item.name}}</option>
+              
+          </select>
+          <button class="btn btn-outline-secondary" type="button">Download Report</button>
+     
+        </div>
+    <div class="row">
+      <div class="d-flex middleContent" id="wrapper">
+          
+            <!-- Page content wrapper-->
+            
+                <!-- Page content-->
+                <div class="container-fluid" style="overflow:hidden ;">
+                        
+                        
+                            <iframe [src]="pltUrl"  scrolling="no" style=" width: 380px; height: 450px;  overflow: hidden; background:#FFFFFF;"></iframe>
+                        
+
+                      
+                        
+                            <iframe [src]="pieChartUrl" scrolling="no" style=" width: 380px; height: 450px;  overflow: hidden; " ></iframe>
+                   
+
+             
+                            
+                            <iframe [src]="compPlotUrl" scrolling="no" style=" width: 380px; height: 450px;  overflow: hidden;" ></iframe>
+                 
+
+                        
+                            <!-- <iframe [src]="appPlotUrl" scrolling="no" style=" width: 295px; height: 450px;  overflow: hidden;" ></iframe> -->
+              
+
+              
+                            
+                     
+                </div>
+            
+        </div> 
+
+    </div>
+    <div class="row"  *ngIf="selecteddevice == 'Uploaded Data'">
+        <table class="table" style="margin-top: 20px; border: 1px solid #0000001A; background: #FFFFFF;">
+          
+            
+            <thead >
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:0;position: -webkit-sticky; background:#E6E9F4;background-size: auto;" >
+                  <th rowspan="2">Division </th>
+                  <th rowspan="2">Business/application owner and contact </th>
+                  <th rowspan="2" >Hostname </th>
+                  <th rowspan="2">Application Name </th>
+                  <th rowspan="2">Application Details </th>
+                  <th rowspan="2">CPU </th>
+                  <th rowspan="2">Memory GB</th>
+                  <th rowspan="2"> Storage Provisioned</th>
+                  <th rowspan="2">Storage Used </th>
+                  <th colspan="4"  style="text-align: center">Category Rank</th>
+              </tr>
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:20px;position: -webkit-sticky; background:#E6E9F4;">
+                    <th>1</th>
+                    <th>2</th>
+                    <th style="min-width:125px;">3</th>
+                    <th style="min-width:125px;">4</th>
+                   
+                  
+              </tr>
+             
+          </thead>
+          <tbody style="max-height: 300px;
+          overflow: auto;" >
+              <tr *ngFor="let items of catogfile; let i=index" style="font-size: 11px;">
+                
+             <td>{{items.Division}}</td> 
+             <td>{{items.Business_application_owner_and_contact}}</td> 
+             <td>{{items.Hostname}}</td>  
+             <td>{{items.Application_Name}}</td> 
+             <td>{{items.Application_Details}}</td>              
+             <td>{{items.CPU}}</td> 
+             <td>{{items.MemoryGB}}</td> 
+             <td>{{items.Storage_Provisioned}}</td> 
+             <td>{{items.Storage_Used}}</td> 
+            
+             <td>{{items.Category_Rank[0]}}</td>
+               <td>{{items.Category_Rank[1]}}</td>
+            
+              </tr>
+         
+              
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+    </div>
+    <div class="row" *ngIf="selecteddevice == 'Device 42 Data'">
+        <table class="table" style="margin-top: 20px; border: 1px solid #0000001A; background: #FFFFFF;">
+          
+            
+            <thead >
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:0;position: -webkit-sticky; background:#E6E9F4;background-size: auto;" >
+                  <th rowspan="2">Hostname </th>
+                  <th rowspan="2">Virtual Subtype </th>
+                  <th rowspan="2" >Envirionment </th>
+                  <th rowspan="2">Memory GB</th>
+                  <th rowspan="2">CPU </th>
+                  <th rowspan="2">CPU Load in %</th>
+                  <th rowspan="2"> Storage Provisioned</th>
+                
+                  <th colspan="4"  style="text-align: center">Category Rank</th>
+              </tr>
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:20px;position: -webkit-sticky; background:#E6E9F4;">
+                    <th>1</th>
+                    <th>2</th>
+                    <th style="min-width:125px;">3</th>
+                    <th style="min-width:125px;">4</th>
+                   
+                  
+              </tr>
+             
+          </thead>
+          <tbody style="max-height: 300px;
+          overflow: auto;" >
+              <tr *ngFor="let item of catogfile;" style="font-size: 11px;">
+                
+             <td>{{item.Hostname}}</td> 
+             <td>{{item.Virtual_Subtype}}</td> 
+             <td>{{item.Environment}}</td>  
+             <td>{{item.MemoryGB}}</td> 
+             <td>{{item.CPU}}</td>              
+             <td>{{item.CPU_load}}</td> 
+             <td>{{item.Storage_Provisioned}}</td> 
+           
+            
+             <td>{{item.Category_Rank[0]}}</td>
+               <td>{{item.Category_Rank[1]}}</td>
+            
+              </tr>
+         
+              
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+    </div>
+    <div class="row" *ngIf="selecteddevice == 'Combined Data'">
+        <table class="table" style="margin-top: 20px; border: 1px solid #0000001A; background: #FFFFFF;">
+          
+            
+            <thead >
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:0;position: -webkit-sticky; background:#E6E9F4;background-size: auto;" >
+                  <th rowspan="2">Source </th>
+                  <th rowspan="2">Division </th>
+                  <th rowspan="2">Business/application owner and contact </th>
+                  <th rowspan="2" >Hostname </th>
+                  <th rowspan="2">Application Name </th>
+                  <th rowspan="2">Application Details </th>
+                  <th rowspan="2">Virtual Subtype </th>
+                  <th rowspan="2" >Envirionment </th>
+                  <th rowspan="2">Memory GB</th>
+                  <th rowspan="2">CPU </th>
+                  <th rowspan="2">CPU Load in %</th>
+                
+                  <th rowspan="2"> Storage Provisioned</th>
+                  <th rowspan="2">Storage Used </th>
+                  <th colspan="4"  style="text-align: center">Category Rank</th>
+              </tr>
+              
+              <tr style="font-size: 11px; line-height: 11px; position: sticky; top:20px;position: -webkit-sticky; background:#E6E9F4;">
+                    <th>1</th>
+                    <th>2</th>
+                    <th style="min-width:125px;">3</th>
+                    <th style="min-width:125px;">4</th>
+                   
+                  
+              </tr>
+             
+          </thead>
+          <tbody style="max-height: 300px;
+          overflow: auto;" >
+              <tr *ngFor="let device of catogfile;" style="font-size: 11px;">
+                <td>{{device.Source}}</td> 
+                <td>{{device.Division}}</td> 
+                <td>{{device.Business_application_owner_and_contact}}</td> 
+                <td>{{device.Hostname}}</td>  
+                <td>{{device.Application_Name}}</td> 
+                <td>{{device.Application_Details}}</td>              
+         
+             <td>{{device.Virtual_Subtype}}</td> 
+             <td>{{device.Environment}}</td>  
+             <td>{{device.MemoryGB}}</td> 
+             <td>{{device.CPU}}</td>              
+             <td>{{device.CPU_load}}</td> 
+             <td>{{device.Storage_Provisioned}}</td> 
+             <td>{{device.Storage_Used}}</td> 
+            
+             <td>{{device.Category_Rank[0]}}</td>
+               <td>{{device.Category_Rank[1]}}</td>
+            
+              </tr>
+         
+              
+          </tbody>
+        </table>
+
+
+
+
+
+
+
+    </div>
+</div>
+<!-- /.container-fluid -->

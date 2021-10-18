@@ -1,0 +1,15 @@
+.network-body-sec h2 {
+    font-size: 16px;
+    width: 100%;
+    color: #1c1e25;
+    border-bottom: 2px solid #cccccc;
+    margin: 0 20px;
+    padding-bottom: 10px;
+  }
+  
+  .network-body-sec h2 img {
+    padding-right: 10px;
+  }
+  .network-body-sec button {
+    float: right;
+  }
